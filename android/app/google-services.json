@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "849185551170",
+    "firebase_url": "https://accessbrandywine.firebaseio.com",
+    "project_id": "accessbrandywine",
+    "storage_bucket": "accessbrandywine.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849185551170:android:dac8adcf80f4848cadcedb",
+        "android_client_info": {
+          "package_name": "com.example.accessbrandywine"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849185551170-ucotis5dcj98tql8fv5lbp84rj9rrhqd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPp59gE48Pj3xJkCdOPkDGNrSGg2V_qYM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849185551170-ucotis5dcj98tql8fv5lbp84rj9rrhqd.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "849185551170-md6lino3jujikoo3f764d8sofe56t0ki.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.zcw.accessbrandywine"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
