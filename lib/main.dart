@@ -34,6 +34,35 @@ class PictureScreen extends StatelessWidget {
             backgroundColor: Colors.grey[900],
             elevation: 0,
           ),
+          body: Padding(
+            padding: EdgeInsets.only(top: 60, left: 70, right: 85),
+            child: Column(
+              children: [
+                SizedBox(height: 4.0),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  color: Colors.white,
+                  height: 60.0,
+                  child: TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    style: TextStyle(
+                      fontFamily: 'OpenSans',
+                      fontSize: 20,
+                    ),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.only(top: 14.0),
+                      prefixIcon: Icon(
+                        Icons.email,
+                        color: Colors.black,
+                      ),
+                      hintText: 'Enter Email',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );
