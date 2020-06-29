@@ -63,6 +63,35 @@ class PictureScreen extends StatelessWidget {
               ],
             ),
           ),
+          floatingActionButton: Padding(
+            padding: EdgeInsets.only(top: 230, left: 90, right: 70),
+            child: Column(
+              children: [
+                SizedBox(height: 2.0),
+                Container(
+                  alignment: AlignmentDirectional.centerStart,
+                  color: Colors.white,
+                  height: 60.0,
+                  child: TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    style: TextStyle(
+                      fontFamily: 'OpenSans',
+                      fontSize: 20,
+                    ),
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.only(top: 14.0),
+                      prefixIcon: Icon(
+                        Icons.email,
+                        color: Colors.black,
+                      ),
+                      hintText: 'Enter Password',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
       ],
     );
