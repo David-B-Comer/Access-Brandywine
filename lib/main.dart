@@ -89,12 +89,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 decoration: InputDecoration(
                     labelText: 'Password'
                 ),
-
                 controller: passwordTextController,
               ),
             ),
             SignInButtonBuilder(
-              text: 'Sign in with Email',
+              text: 'Sign up with Email',
               icon: Icons.email,
               onPressed: () {signUpWithMail();},
               backgroundColor: Colors.blueGrey[700],
@@ -109,7 +108,6 @@ class _MyHomePageState extends State<MyHomePage> {
               text: "Sign up with Google",
               onPressed: () {_googleSignUp();},
             )
-
           ],
         ),
       ),
