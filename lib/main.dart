@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:flutter_signin_button/flutter_signin_button.dart';
 
 void main() => runApp(MyApp());
 
@@ -86,69 +87,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: passwordTextController,
               ),
             ),
-            SizedBox(height: 20),
-            SizedBox(
-              width: 360,
-              child: RaisedButton(
-                child: Row(
-                  children: <Widget>[
-                    Icon(Icons.mail, size: 30),
-                    Text(
-                      '  Sign up with Email',
-                      style: TextStyle(fontSize: 28),
-                    ),
-                  ],
-                ),
-                textColor: Colors.white,
-                color: Colors.red[400],
-                padding: EdgeInsets.all(10),
-                onPressed: () {
-                  signUpWithMail();
-                },
-              ),
+            SignInButtonBuilder(
+              text: 'Sign in with Email',
+              icon: Icons.email,
+              onPressed: () {signUpWithMail();},
+              backgroundColor: Colors.blueGrey[700],
             ),
-            SizedBox(height: 20),
-            SizedBox(
-              width: 360,
-              child: RaisedButton(
-                child: Row(
-                  children: <Widget>[
-                    Icon(Icons.thumb_up, size: 30),
-                    Text(
-                      '  Sign up with Facebook',
-                      style: TextStyle(fontSize: 28),
-                    ),
-                  ],
-                ),
-                textColor: Colors.white,
-                color: Colors.blue[900],
-                padding: EdgeInsets.all(10),
-                onPressed: () {
-                  signUpWithFacebook();
-                },
-              ),
+            SignInButton(
+              Buttons.Facebook,
+              text: "Sign up with Facebook",
+              onPressed: () {signUpWithFacebook();},
             ),
-            SizedBox(height: 20),
-            SizedBox(
-              width: 360,
-              child: RaisedButton(
-                child: Row(
-                  children: <Widget>[
-                    Icon(Icons.toys, size: 30),
-                    Text(
-                      '  Sign up with Google',
-                      style: TextStyle(fontSize: 28),
-                    ),
-                  ],
-                ),
-                textColor: Colors.black,
-                color: Colors.white,
-                padding: EdgeInsets.all(10),
-                onPressed: () {
-                  _googleSignUp();
-                },
-              ),
-            ),
+            SignInButton(
+              Buttons.Google,
+              text: "Sign up with Google",
+              onPressed: () {_googleSignUp();},
+            )
 
           ],
         ),
