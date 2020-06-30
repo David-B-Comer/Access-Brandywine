@@ -16,6 +16,8 @@ class _MyAppState extends State<MyApp> {
   var loggedIn = false;
   var firebaseAuth = FirebaseAuth.instance;
 
+  get _facebookLogin => null;
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -162,7 +164,7 @@ class _MyAppState extends State<MyApp> {
   Future<FacebookLoginResult> _handleFBSignIn() async {
     FacebookLogin facebookLogin = FacebookLogin();
     FacebookLoginResult facebookLoginResult =
-    await facebookLogin.logInWithReadPermissions(['email']);
+    await _facebookLogin.logIn(['email']);
     switch (facebookLoginResult.status) {
       case FacebookLoginStatus.cancelledByUser:
         print("Cancelled");
