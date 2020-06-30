@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
 
 void main() => runApp(MyApp());
 
