@@ -64,7 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              width: 360,
+              width: 220,
+              height: 40,
+
               child: TextFormField(
                 validator: (input) {
                   if(input.isEmpty) {
@@ -72,13 +74,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   }
                 },
                 decoration: InputDecoration(
-                    labelText: 'Email'
+                    labelText: 'Email',
+                  filled: true,
+                  fillColor: Colors.white,
                 ),
                 controller: emailTextController,
               ),
             ),
             SizedBox(
-              width: 360,
+              width: 220,
+              height: 40,
               child: TextFormField(
                 obscureText: true,
                 validator: (input) {
@@ -87,7 +92,9 @@ class _MyHomePageState extends State<MyHomePage> {
                   }
                 },
                 decoration: InputDecoration(
-                    labelText: 'Password'
+                    labelText: 'Password',
+                  filled: true,
+                  fillColor: Colors.white,
                 ),
                 controller: passwordTextController,
               ),
@@ -96,7 +103,7 @@ class _MyHomePageState extends State<MyHomePage> {
               text: 'Sign up with Email',
               icon: Icons.email,
               onPressed: () {signUpWithMail();},
-              backgroundColor: Colors.blueGrey[700],
+              backgroundColor: Colors.orange,
             ),
             SignInButton(
               Buttons.Facebook,
