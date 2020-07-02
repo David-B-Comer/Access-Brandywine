@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.black,
         title: Text(
           widget.title,
         ),
@@ -64,7 +64,9 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              width: 360,
+              width: 220,
+              height: 40,
+
               child: TextFormField(
                 validator: (input) {
                   if(input.isEmpty) {
@@ -72,13 +74,16 @@ class _MyHomePageState extends State<MyHomePage> {
                   }
                 },
                 decoration: InputDecoration(
-                    labelText: 'Email'
+                    labelText: 'Email',
+                  filled: true,
+                  fillColor: Colors.white,
                 ),
                 controller: emailTextController,
               ),
             ),
             SizedBox(
-              width: 360,
+              width: 220,
+              height: 40,
               child: TextFormField(
                 obscureText: true,
                 validator: (input) {
@@ -87,25 +92,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   }
                 },
                 decoration: InputDecoration(
-                    labelText: 'Password'
+                    labelText: 'Password',
+                  filled: true,
+                  fillColor: Colors.white,
                 ),
                 controller: passwordTextController,
               ),
             ),
             SignInButtonBuilder(
-              text: 'Sign up with Email',
+              text: 'Login with Email',
               icon: Icons.email,
               onPressed: () {signUpWithMail();},
-              backgroundColor: Colors.blueGrey[700],
+              backgroundColor: Colors.orange,
             ),
             SignInButton(
               Buttons.Facebook,
-              text: "Sign up with Facebook",
+              text: "Login with Facebook",
               onPressed: () {signUpWithFacebook();},
             ),
             SignInButton(
               Buttons.Google,
-              text: "Sign up with Google",
+              text: "Login with Google",
               onPressed: () {_googleSignUp();},
             )
           ],
