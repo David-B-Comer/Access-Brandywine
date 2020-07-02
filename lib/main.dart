@@ -48,7 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.black,
         title: Text(
           widget.title,
         ),
@@ -100,19 +100,19 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             SignInButtonBuilder(
-              text: 'Sign up with Email',
+              text: 'Login with Email',
               icon: Icons.email,
               onPressed: () {signUpWithMail();},
               backgroundColor: Colors.orange,
             ),
             SignInButton(
               Buttons.Facebook,
-              text: "Sign up with Facebook",
+              text: "Login with Facebook",
               onPressed: () {signUpWithFacebook();},
             ),
             SignInButton(
               Buttons.Google,
-              text: "Sign up with Google",
+              text: "Login with Google",
               onPressed: () {_googleSignUp();},
             )
           ],
