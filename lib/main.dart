@@ -61,6 +61,20 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(bottom: 100.0),
+              child: RaisedButton(
+                highlightColor: Colors.white,
+                child: Text(
+                  'Register for Account',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                      fontSize: 18),
+                ),
+                onPressed: () {},
+              ),
+            ),
             SizedBox(
               width: 220,
               height: 40,
@@ -96,14 +110,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: passwordTextController,
               ),
             ),
-            /* SignInButtonBuilder(
+            SignInButtonBuilder(
               text: 'Login with Email',
               icon: Icons.email,
               onPressed: () {
                 signUpWithMail();
               },
               backgroundColor: Colors.orange,
-            ),*/
+            ),
             SignInButton(
               Buttons.Facebook,
               text: "Login with Facebook",
@@ -115,17 +129,9 @@ class _MyHomePageState extends State<MyHomePage> {
               Buttons.Google,
               text: "Login with Google",
               onPressed: () {
-                _googleSignUp().whenComplete(() {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return MyHomePage();
-                      },
-                    ),
-                  );
-                });
+                _googleSignUp();
               },
-            ),
+            )
           ],
         ),
       ),
@@ -157,27 +163,26 @@ class _MyHomePageState extends State<MyHomePage> {
       print(e.message);
     }
   }
-}
 
-Future<void> signUpWithFacebook() async {
-  try {
-    var facebookLogin = new FacebookLogin();
-    var result = await facebookLogin.logIn(['email']);
+  Future<void> signUpWithFacebook() async {
+    try {
+      var facebookLogin = new FacebookLogin();
+      var result = await facebookLogin.logIn(['email']);
 
-    if (result.status == FacebookLoginStatus.loggedIn) {
-      final AuthCredential credential = FacebookAuthProvider.getCredential(
-        accessToken: result.accessToken.token,
-      );
-      final FirebaseUser user =
-          (await FirebaseAuth.instance.signInWithCredential(credential)).user;
-      print('signed in ' + user.displayName);
-      return user;
+      if (result.status == FacebookLoginStatus.loggedIn) {
+        final AuthCredential credential = FacebookAuthProvider.getCredential(
+          accessToken: result.accessToken.token,
+        );
+        final FirebaseUser user =
+            (await FirebaseAuth.instance.signInWithCredential(credential)).user;
+        print('signed in ' + user.displayName);
+        return user;
+      }
+    } catch (e) {
+      print(e.message);
     }
-  } catch (e) {
-    print(e.message);
   }
-}
-/*
+
   Future<void> signUpWithMail() async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -201,5 +206,4 @@ Future<void> signUpWithFacebook() async {
           });
     }
   }
-
- */
+}
