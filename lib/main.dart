@@ -119,6 +119,9 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             SizedBox(
+              height: 5,
+            ),
+            SizedBox(
               width: 220,
               height: 40,
               child: RaisedButton(
