@@ -118,16 +118,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 _googleSignUp();
               },
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 100.0),
+            SizedBox(
+              width: 220,
+              height: 40,
               child: RaisedButton(
                 color: Colors.white,
                 child: Text(
                   'Register for Account',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                      fontSize: 18),
+                  style: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
                 onPressed: () {},
               ),
