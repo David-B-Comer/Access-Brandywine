@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
@@ -33,7 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
 
@@ -66,15 +64,14 @@ class _MyHomePageState extends State<MyHomePage> {
             SizedBox(
               width: 220,
               height: 40,
-
               child: TextFormField(
                 validator: (input) {
-                  if(input.isEmpty) {
+                  if (input.isEmpty) {
                     return 'Please type an email';
                   }
                 },
                 decoration: InputDecoration(
-                    labelText: 'Email',
+                  labelText: 'Email',
                   filled: true,
                   fillColor: Colors.white,
                 ),
@@ -87,34 +84,48 @@ class _MyHomePageState extends State<MyHomePage> {
               child: TextFormField(
                 obscureText: true,
                 validator: (input) {
-                  if(input.isEmpty) {
+                  if (input.isEmpty) {
                     return 'Please type an password';
                   }
                 },
                 decoration: InputDecoration(
-                    labelText: 'Password',
+                  labelText: 'Password',
                   filled: true,
                   fillColor: Colors.white,
                 ),
                 controller: passwordTextController,
               ),
             ),
-            SignInButtonBuilder(
+            /* SignInButtonBuilder(
               text: 'Login with Email',
               icon: Icons.email,
-              onPressed: () {signUpWithMail();},
+              onPressed: () {
+                signUpWithMail();
+              },
               backgroundColor: Colors.orange,
-            ),
+            ),*/
             SignInButton(
               Buttons.Facebook,
               text: "Login with Facebook",
-              onPressed: () {signUpWithFacebook();},
+              onPressed: () {
+                signUpWithFacebook();
+              },
             ),
             SignInButton(
               Buttons.Google,
               text: "Login with Google",
-              onPressed: () {_googleSignUp();},
-            )
+              onPressed: () {
+                _googleSignUp().whenComplete(() {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return MyHomePage();
+                      },
+                    ),
+                  );
+                });
+              },
+            ),
           ],
         ),
       ),
@@ -124,63 +135,62 @@ class _MyHomePageState extends State<MyHomePage> {
   Future<void> _googleSignUp() async {
     try {
       final GoogleSignIn _googleSignIn = GoogleSignIn(
-        scopes: [
-          'email'
-        ],
+        scopes: ['email'],
       );
       final FirebaseAuth _auth = FirebaseAuth.instance;
 
       final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-      final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+      final GoogleSignInAuthentication googleAuth =
+          await googleUser.authentication;
 
       final AuthCredential credential = GoogleAuthProvider.getCredential(
         accessToken: googleAuth.accessToken,
         idToken: googleAuth.idToken,
       );
 
-      final FirebaseUser user = (await _auth.signInWithCredential(credential)).user;
+      final FirebaseUser user =
+          (await _auth.signInWithCredential(credential)).user;
       print("signed in " + user.displayName);
 
       return user;
-    }catch (e) {
+    } catch (e) {
       print(e.message);
     }
   }
+}
 
-  Future<void> signUpWithFacebook() async{
-    try {
-      var facebookLogin = new FacebookLogin();
-      var result = await facebookLogin.logIn(['email']);
+Future<void> signUpWithFacebook() async {
+  try {
+    var facebookLogin = new FacebookLogin();
+    var result = await facebookLogin.logIn(['email']);
 
-      if(result.status == FacebookLoginStatus.loggedIn) {
-        final AuthCredential credential = FacebookAuthProvider.getCredential(
-          accessToken: result.accessToken.token,
-
-        );
-        final FirebaseUser user = (await FirebaseAuth.instance.signInWithCredential(credential)).user;
-        print('signed in ' + user.displayName);
-        return user;
-      }
-    }catch (e) {
-      print(e.message);
+    if (result.status == FacebookLoginStatus.loggedIn) {
+      final AuthCredential credential = FacebookAuthProvider.getCredential(
+        accessToken: result.accessToken.token,
+      );
+      final FirebaseUser user =
+          (await FirebaseAuth.instance.signInWithCredential(credential)).user;
+      print('signed in ' + user.displayName);
+      return user;
     }
+  } catch (e) {
+    print(e.message);
   }
-
+}
+/*
   Future<void> signUpWithMail() async {
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: emailTextController.text,
-          password: passwordTextController.text
-      );
+          password: passwordTextController.text);
       showDialog(
           context: context,
           builder: (context) {
             return AlertDialog(
               content: Text('Success sign up'),
             );
-          }
-      );
-    }catch(e) {
+          });
+    } catch (e) {
       print(e.message);
       showDialog(
           context: context,
@@ -188,9 +198,8 @@ class _MyHomePageState extends State<MyHomePage> {
             return AlertDialog(
               content: Text(e.message),
             );
-          }
-      );
+          });
     }
-
   }
-}
+
+ */
