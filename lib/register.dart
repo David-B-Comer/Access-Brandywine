@@ -18,7 +18,8 @@ class RegistrationPage extends StatelessWidget {
         ),
         child: Center(
           child: RaisedButton(
-            onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
+            onPressed: () => Navigator.pop(context),
+            //onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
             child: Text('Go back to HomePage!'),
           ),
         ),
