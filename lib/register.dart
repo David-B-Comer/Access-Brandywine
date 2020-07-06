@@ -1,32 +1,28 @@
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-class Register extends StatefulWidget {
-  final Function toggleView;
-
-  Register({this.toggleView});
-
-  @override
-  _RegisterState createState() => _RegisterState();
-}
-
-class _RegisterState extends State<Register>{
-
-final AuthService _auth = AuthService();
-
-String email = '';
-String password = '';
-
-@override
-Widget Build(BuildContext context) {
-  return Scaffold
-}
-
+class RegistrationPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return Scaffold(
+      backgroundColor: Colors.blueGrey,
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text("Registration Page"),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('images/BrandywineRiver.jpg'),
+              fit: BoxFit.cover),
+        ),
+        child: Center(
+          child: RaisedButton(
+            onPressed: () {},
+            child: Text('Go back to HomePage!'),
+          ),
+        ),
+      ),
+    );
   }
-}
-
-class AuthService {
 }

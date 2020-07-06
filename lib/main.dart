@@ -5,6 +5,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'register.dart';
+// ignore: implementation_imports
+import 'package:flutter/src/material/colors.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,12 +16,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Access Brandywine',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Access Brandywine'),
-    );
+        title: 'Access Brandywine',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: MyHomePage(title: 'Access Brandywine'),
+        routes: <String, WidgetBuilder>{
+          '/registration': (_) => new RegistrationPage(),
+        });
   }
 }
 
@@ -130,9 +135,11 @@ class _MyHomePageState extends State<MyHomePage> {
                   'Register for Account',
                   style: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
-                onPressed: () {},
+                onPressed: () =>
+                    Navigator.of(context).pushNamed("/registration"),
               ),
             ),
+            //Navigate to second screen
           ],
         ),
       ),
