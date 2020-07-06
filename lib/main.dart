@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: MyHomePage(title: 'Access Brandywine'),
+      initialRoute: '/',
       routes: {
         RegistrationPage.id: (context) => RegistrationPage(),
         MyHomePage.id: (context) => MyHomePage(),
