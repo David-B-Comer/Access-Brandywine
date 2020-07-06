@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:newflutterapp/passport.dart';
 import 'register.dart';
 // ignore: implementation_imports
 import 'package:flutter/src/material/colors.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
       routes: {
         RegistrationPage.id: (context) => RegistrationPage(),
         MyHomePage.id: (context) => MyHomePage(),
+        PassportPage.id: (context) => PassportPage(),
       },
     );
   }
@@ -110,7 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
               text: 'Login with Email',
               icon: Icons.email,
               onPressed: () {
-                signUpWithMail();
+                signUpWithMail().whenComplete(
+                    () => Navigator.pushNamed(context, PassportPage.id));
               },
               backgroundColor: Colors.orange,
             ),
@@ -118,14 +121,17 @@ class _MyHomePageState extends State<MyHomePage> {
               Buttons.Facebook,
               text: "Login with Facebook",
               onPressed: () {
-                signUpWithFacebook();
+                signUpWithFacebook().whenComplete(
+                    () => Navigator.pushNamed(context, PassportPage.id));
+                ;
               },
             ),
             SignInButton(
               Buttons.Google,
               text: "Login with Google",
               onPressed: () {
-                _googleSignUp();
+                _googleSignUp().whenComplete(
+                    () => Navigator.pushNamed(context, PassportPage.id));
               },
             ),
             SizedBox(
