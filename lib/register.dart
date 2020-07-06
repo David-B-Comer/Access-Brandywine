@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:newflutterapp/main.dart';
 
 class RegistrationPage extends StatelessWidget {
+  static String id = 'registration';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,8 +22,7 @@ class RegistrationPage extends StatelessWidget {
         ),
         child: Center(
           child: RaisedButton(
-            onPressed: () => Navigator.pop(context),
-            //onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
+            onPressed: () => Navigator.of(context).pushReplacementNamed('/'),
             child: Text('Go back to HomePage!'),
           ),
         ),

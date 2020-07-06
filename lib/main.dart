@@ -16,18 +16,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Access Brandywine',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: MyHomePage(title: 'Access Brandywine'),
-        routes: <String, WidgetBuilder>{
-          '/registration': (_) => new RegistrationPage(),
-        });
+      title: 'Access Brandywine',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: MyHomePage(title: 'Access Brandywine'),
+      routes: {
+        RegistrationPage.id: (context) => RegistrationPage(),
+        MyHomePage.id: (context) => MyHomePage(),
+      },
+    );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  static String id = 'MyHomePage';
+
   MyHomePage({Key key, this.title}) : super(key: key);
 
   final String title;
@@ -136,7 +140,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
                 onPressed: () =>
-                    Navigator.of(context).pushNamed("/registration"),
+                    Navigator.of(context).pushNamed(RegistrationPage.id),
               ),
             ),
             //Navigate to second screen
