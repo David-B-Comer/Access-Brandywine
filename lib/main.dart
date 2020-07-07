@@ -7,7 +7,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:newflutterapp/passport.dart';
 import 'register.dart';
-// ignore: implementation_imports
 import 'package:flutter/src/material/colors.dart';
 
 void main() => runApp(MyApp());
@@ -67,8 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('images/BrandywineRiver.jpg'),
-              fit: BoxFit.cover),
+              image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -108,6 +106,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 controller: passwordTextController,
               ),
             ),
+            SizedBox(
+              height: 5.0,
+            ),
             SignInButtonBuilder(
               text: 'Login with Email',
               icon: Icons.email,
@@ -123,7 +124,6 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 signUpWithFacebook().whenComplete(
                     () => Navigator.pushNamed(context, PassportPage.id));
-                ;
               },
             ),
             SignInButton(
@@ -135,7 +135,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             SizedBox(
-              height: 5,
+              height: 375,
             ),
             SizedBox(
               width: 220,
