@@ -33,14 +33,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
+
     return MaterialApp(
       title: 'Registration Page',
       home: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage('images/bw.jpg'), fit: BoxFit.cover)),
+                image: AssetImage('images/bw4.jpg'), fit: BoxFit.cover)),
         child: Scaffold(
-          backgroundColor: Color.fromRGBO(225, 225, 225, .6),
+          backgroundColor: Color.fromRGBO(225, 225, 225, .58),
           appBar: AppBar(
             backgroundColor: Colors.black,
             title: Text(
@@ -53,14 +54,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                _image == null
-                    ? IconButton(
-                        icon: Icon(Icons.add_a_photo),
-                        onPressed: () {
-                          getImage();
-                        },
-                      )
-                    : Image.file(_image),
                 SizedBox(
                   height: 2.0,
                 ),
@@ -79,12 +72,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 1.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 2.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                     ),
@@ -108,12 +101,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 1.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 2.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                     ),
@@ -137,12 +130,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 1.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 2.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                     ),
@@ -166,12 +159,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 1.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 2.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                     ),
@@ -195,12 +188,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 1.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 2.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                     ),
@@ -224,12 +217,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                       enabledBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 1.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderSide:
-                            BorderSide(color: Colors.blueGrey[800], width: 2.0),
+                            BorderSide(color: Colors.black45, width: 2.0),
                         borderRadius: BorderRadius.all(Radius.circular(32.0)),
                       ),
                     ),
@@ -241,7 +234,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 36.0),
                   child: Material(
-                    color: Colors.blueAccent,
+                    color: Color.fromRGBO(255, 255, 255, .3),
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),
                     elevation: 5.0,
                     child: MaterialButton(
@@ -253,6 +246,9 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       height: 82.0,
                       child: Text(
                         'Create Account',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                        ),
                       ),
                     ),
                   ),
