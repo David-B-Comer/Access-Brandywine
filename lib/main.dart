@@ -130,12 +130,14 @@ class _MyHomePageState extends State<MyHomePage> {
               Buttons.Google,
               text: "Login with Google",
               onPressed: () {
-                _googleSignUp().whenComplete(
-                    () => Navigator.pushNamed(context, PassportPage.id));
+                _googleSignUp();
+
+                //.whenComplete(
+                // () => Navigator.pushNamed(context, PassportPage.id));
               },
             ),
             SizedBox(
-              height: 375,
+              height: 275,
             ),
             SizedBox(
               width: 220,
