@@ -79,6 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   if (input.isEmpty) {
                     return 'Please type an email';
                   }
+                  return 'Please type';
                 },
                 decoration: InputDecoration(
                   labelText: 'Email',
@@ -96,7 +97,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 validator: (input) {
                   if (input.isEmpty) {
                     return 'Please type an password';
+                    // ignore: missing_return
                   }
+                  return 'Please type a password';
                 },
                 decoration: InputDecoration(
                   labelText: 'Password',
@@ -130,10 +133,8 @@ class _MyHomePageState extends State<MyHomePage> {
               Buttons.Google,
               text: "Login with Google",
               onPressed: () {
-                _googleSignUp();
-
-                //.whenComplete(
-                // () => Navigator.pushNamed(context, PassportPage.id));
+                _googleSignUp().whenComplete(
+                    () => Navigator.pushNamed(context, PassportPage.id));
               },
             ),
             SizedBox(
