@@ -43,6 +43,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
         child: Scaffold(
           backgroundColor: Color.fromRGBO(225, 225, 225, .58),
           appBar: AppBar(
+            centerTitle: true,
             backgroundColor: Colors.black,
             title: Text(
               widget.title,
@@ -55,15 +56,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 SizedBox(
-                  height: 2.0,
+                  height: 15.0,
                 ),
                 Flexible(
-                  flex: 3,
+                  flex: 2,
                   child: TextField(
+                    style: TextStyle(
+                        color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
                       //Do something with the user input.
                     },
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color.fromRGBO(225, 225, 225, .2),
                       hintText: 'Enter your first name',
                       contentPadding: EdgeInsets.symmetric(
                           vertical: 12.0, horizontal: 20.0),
@@ -89,6 +94,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Flexible(
                   flex: 3,
                   child: TextField(
+                    style: TextStyle(
+                        color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
                       //Do something with the user input.
                     },
@@ -118,6 +125,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Flexible(
                   flex: 3,
                   child: TextField(
+                    style: TextStyle(
+                        color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
                       //Do something with the user input.
                     },
@@ -147,6 +156,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Flexible(
                   flex: 3,
                   child: TextField(
+                    style: TextStyle(
+                        color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
                       //Do something with the user input.
                     },
@@ -176,6 +187,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Flexible(
                   flex: 3,
                   child: TextField(
+                    style: TextStyle(
+                        color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
                       //Do something with the user input.
                     },
@@ -205,10 +218,14 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Flexible(
                   flex: 3,
                   child: TextField(
+                    style: TextStyle(
+                        color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
                       //Do something with the user input.
                     },
                     decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Color.fromRGBO(225, 225, 225, .2),
                       hintText: 'Upload photo',
                       contentPadding: EdgeInsets.symmetric(
                           vertical: 12.0, horizontal: 20.0),
@@ -229,12 +246,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   ),
                 ),
                 SizedBox(
-                  height: 26.0,
+                  height: 16.0,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 36.0),
                   child: Material(
-                    color: Color.fromRGBO(255, 255, 255, .3),
+                    color: Color.fromRGBO(255, 255, 255, .4),
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),
                     elevation: 5.0,
                     child: MaterialButton(
