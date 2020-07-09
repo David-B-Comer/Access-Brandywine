@@ -109,13 +109,22 @@ class _PassportPageState extends State<PassportPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      FlatButton(
+                      RaisedButton(
+                          color: Colors.white38,
                           onPressed: () => launch("tel://9167051794"),
                           child: Text('Call me')),
-                      FlatButton(
+                      SizedBox(
+                        width: 4,
+                      ),
+                      RaisedButton(
+                          color: Colors.white38,
                           onPressed: () => launch("mailto:apehow111@gmail.com"),
                           child: Text('Email me')),
-                      FlatButton(
+                      SizedBox(
+                        width: 4,
+                      ),
+                      RaisedButton(
+                          color: Colors.white38,
                           onPressed: () => launch("sms://9167051794"),
                           child: Text('Text me')),
                     ],
@@ -127,7 +136,7 @@ class _PassportPageState extends State<PassportPage> {
                     child: Container(
                       margin: EdgeInsets.only(bottom: 30),
                       child: Material(
-                        color: Colors.white,
+                        color: Colors.white38,
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
                         elevation: 5.0,
                         child: MaterialButton(

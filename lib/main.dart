@@ -97,7 +97,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 validator: (input) {
                   if (input.isEmpty) {
                     return 'Please type an password';
-                    // ignore: missing_return
                   }
                   return 'Please type a password';
                 },

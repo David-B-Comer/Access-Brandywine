@@ -21,6 +21,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   Future getImage() async {
     var image = await ImagePicker.pickImage(source: ImageSource.gallery);
+    File _image;
+
+    Future cameraImage() async {
+      var image = await ImagePicker.pickImage(
+        source: ImageSource.camera,
+        maxHeight: 240.0,
+        maxWidth: 240.0,
+      );
+
+      setState(() {
+        _image = image;
+      });
+    }
 
     setState(() {
       _image = image;
@@ -279,61 +292,3 @@ class _RegistrationPageState extends State<RegistrationPage> {
     );
   }
 }
-
-/*
-Flexible(
-              flex: 3,
-              child: TextField(
-                onChanged: (value) {
-                  //Do something with the user input.
-                },
-                decoration: InputDecoration(
-                  hintText: 'Secret Question',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.blueAccent, width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.blueAccent, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 8.0,
-            ),
-            Flexible(
-              flex: 3,
-              child: TextField(
-                onChanged: (value) {
-                  //Do something with the user input.
-                },
-                decoration: InputDecoration(
-                  hintText: 'Answer to Question',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.blueAccent, width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.blueAccent, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
-            ),
- */
