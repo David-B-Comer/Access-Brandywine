@@ -41,6 +41,7 @@ android {
         applicationId "com.example.accessbrandywine"
         minSdkVersion 21
         targetSdkVersion 28
+        ndkVersion '21.2.6472646'
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -63,6 +64,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics:17.4.3'
     implementation 'com.google.firebase:firebase-auth:19.3.1'
 }
-
 
 apply plugin: 'com.google.gms.google-services'
