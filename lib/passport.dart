@@ -113,8 +113,7 @@ class _PassportPageState extends State<PassportPage> {
                           onPressed: () => launch("tel://9167051794"),
                           child: Text('Call me')),
                       FlatButton(
-                          onPressed: () =>
-                              launch("email://apehow111@gmail.com"),
+                          onPressed: () => launch("mailto:apehow111@gmail.com"),
                           child: Text('Email me')),
                     ],
                   ),
