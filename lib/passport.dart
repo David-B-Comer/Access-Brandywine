@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PassportPage extends StatefulWidget {
   static String id = 'PassportPage';
@@ -15,6 +16,7 @@ class _PassportPageState extends State<PassportPage> {
       home: Scaffold(
         backgroundColor: Colors.teal,
         appBar: AppBar(
+          centerTitle: true,
           backgroundColor: Colors.black,
           title: Text('Access Brandywine'),
         ),
@@ -23,7 +25,6 @@ class _PassportPageState extends State<PassportPage> {
             child: Padding(
               padding: EdgeInsets.only(top: 20.0),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
                     'Desa Burton',
@@ -102,49 +103,27 @@ class _PassportPageState extends State<PassportPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 30.0,
+                    height: 10.0,
                   ),
-                  Card(
-                    margin:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                    color: Colors.white,
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.phone,
-                        size: 40.0,
-                        color: Colors.teal,
-                      ),
-                      title: Text(
-                        '        555-555-5555',
-                        style: TextStyle(
-                          color: Colors.teal,
-                          fontSize: 20.0,
-                        ),
-                      ),
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      FlatButton(
+                          onPressed: () => launch("tel://9167051794"),
+                          child: Text('Call me')),
+                      FlatButton(
+                          onPressed: () =>
+                              launch("email://apehow111@gmail.com"),
+                          child: Text('Email me')),
+                    ],
                   ),
-                  Card(
-                    margin:
-                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
-                    color: Colors.white,
-                    child: ListTile(
-                      leading: Icon(
-                        Icons.email,
-                        size: 40.0,
-                        color: Colors.teal,
-                      ),
-                      title: Text(
-                        '        aaa@aaa.com',
-                        style: TextStyle(
-                          color: Colors.teal,
-                          fontSize: 20.0,
-                        ),
-                      ),
-                    ),
+                  SizedBox(
+                    height: 10.0,
                   ),
                   Expanded(
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: 36.0),
+                    child: Container(
+                      margin: EdgeInsets.only(bottom: 30),
                       child: Material(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
@@ -155,7 +134,7 @@ class _PassportPageState extends State<PassportPage> {
                             Navigator.pushNamed(context, '/');
                           },
                           minWidth: 200.0,
-                          height: 82.0,
+                          height: 20.0,
                           child: Text(
                             'Logout',
                           ),

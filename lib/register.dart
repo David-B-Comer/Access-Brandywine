@@ -255,6 +255,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     borderRadius: BorderRadius.all(Radius.circular(30.0)),
                     elevation: 5.0,
                     child: MaterialButton(
+                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                       onPressed: () {
                         // push the current context to the routeName
                         Navigator.pushNamed(context, '/');

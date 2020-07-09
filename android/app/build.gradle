@@ -41,6 +41,7 @@ android {
         applicationId "com.example.accessbrandywine"
         minSdkVersion 21
         targetSdkVersion 28
+        ndkVersion '21.2.6472646'
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
