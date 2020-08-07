@@ -2,10 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:newflutterapp/main.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:newflutterapp/passport.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import 'components.dart';
+import 'constants.dart';
 
 class RegistrationPage extends StatefulWidget {
   static String id = 'registration';
@@ -17,6 +20,96 @@ class RegistrationPage extends StatefulWidget {
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
+  // create a new authentication instance
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text(
+          widget.title,
+        ),
+      ),
+      body: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.0),
+          child: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                SizedBox(
+                  height: 48.0,
+                ),
+                TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    email = value;
+                    //This does something with the user input.
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your email'),
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                TextField(
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    // This does something with the user input.
+                    password = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your password'),
+                ),
+                SizedBox(
+                  height: 24.0,
+                ),
+                RoundedButton(
+                  title: 'Register',
+                  onPressed: () async {
+                    try {
+                      final newUser =
+                          await _auth.createUserWithEmailAndPassword(
+                              email: email, password: password);
+                      if (newUser != null) {
+                        Navigator.pushNamed(context, PassportPage.id);
+                      }
+                    } catch (e) {
+                      print(e);
+                    }
+
+                    //Navigator.pushNamed(context, LoginScreen.id);
+                  },
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/*
+  final _auth = FirebaseAuth.instance;
+  FirebaseUser loggedInUser;
+  String email;
+  String password;
+  String firstName;
+  String lastName;
+  String passwordAgain;
   File _image;
 
   Future getImage() async {
@@ -74,9 +167,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Flexible(
                   flex: 2,
                   child: TextField(
+                    keyboardType: TextInputType.emailAddress,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
+                      email = value;
                       //Do something with the user input.
                     },
                     decoration: InputDecoration(
@@ -107,6 +203,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Flexible(
                   flex: 3,
                   child: TextField(
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
@@ -138,6 +235,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Flexible(
                   flex: 3,
                   child: TextField(
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
@@ -169,10 +267,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Flexible(
                   flex: 3,
                   child: TextField(
+                    obscureText: true,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
                       //Do something with the user input.
+                      password = value;
                     },
                     decoration: InputDecoration(
                       hintText: 'Enter password',
@@ -200,6 +301,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Flexible(
                   flex: 3,
                   child: TextField(
+                    obscureText: true,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
@@ -231,6 +334,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 Flexible(
                   flex: 3,
                   child: TextField(
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.black87, fontWeight: FontWeight.bold),
                     onChanged: (value) {
@@ -269,12 +373,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     elevation: 5.0,
                     child: MaterialButton(
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      onPressed: () {
+                      onPressed: () async {
                         // push the current context to the routeName
-                        Navigator.pushNamed(context, '/');
+                        try {
+                          final newUser =
+                              await _auth.createUserWithEmailAndPassword(
+                                  email: email, password: password);
+                          if (newUser != null) {
+                            Navigator.pushNamed(context, PassportPage.id);
+                          }
+                        } catch (e) {
+                          print(e);
+                        }
                       },
-                      minWidth: 200.0,
-                      height: 82.0,
                       child: Text(
                         'Create Account',
                         style: TextStyle(
@@ -292,3 +403,5 @@ class _RegistrationPageState extends State<RegistrationPage> {
     );
   }
 }
+
+   */

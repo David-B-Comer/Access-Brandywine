@@ -45,6 +45,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -117,6 +118,7 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {
                 signUpWithMail().whenComplete(
                     () => Navigator.pushNamed(context, PassportPage.id));
+                // .catchError(() => Navigator.pushNamed(context, MyHomePage.id));
               },
               backgroundColor: Colors.orange,
             ),
@@ -143,14 +145,14 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 220,
               height: 40,
               child: RaisedButton(
-                color: Colors.white,
-                child: Text(
-                  'Register for Account',
-                  style: TextStyle(color: Colors.grey, fontSize: 14),
-                ),
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(RegistrationPage.id),
-              ),
+                  color: Colors.white,
+                  child: Text(
+                    'Register for Account',
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                  ),
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(RegistrationPage.id);
+                  }),
             ),
             //Navigate to second screen
           ],
