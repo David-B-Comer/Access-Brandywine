@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart' as UrlLauncher;
 
 class PassportPage extends StatefulWidget {
   static String id = 'PassportPage';
@@ -14,7 +14,7 @@ class _PassportPageState extends State<PassportPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.orange,
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.black,
@@ -103,29 +103,40 @@ class _PassportPageState extends State<PassportPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 50.0,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      FlatButton(
-                          onPressed: () => launch("tel://9167051794"),
+                      RaisedButton(
+                          color: Colors.white38,
+                          onPressed: () async =>
+                              UrlLauncher.launch("tel://9167051794"),
                           child: Text('Call me')),
-                      FlatButton(
-                          onPressed: () =>
-                              launch("email://apehow111@gmail.com"),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      RaisedButton(
+                          color: Colors.white38,
+                          onPressed: () async =>
+                              UrlLauncher.launch('mailto:apehow111@gmail.com'),
                           child: Text('Email me')),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      RaisedButton(
+                          color: Colors.white38,
+                          onPressed: () =>
+                              UrlLauncher.launch("sms://9167051794"),
+                          child: Text('Text me')),
                     ],
-                  ),
-                  SizedBox(
-                    height: 10.0,
                   ),
                   Expanded(
                     child: Container(
-                      margin: EdgeInsets.only(bottom: 30),
+                      margin: EdgeInsets.fromLTRB(20.0, 80.0, 5.0, 60.0),
                       child: Material(
-                        color: Colors.white,
+                        color: Colors.white38,
                         borderRadius: BorderRadius.all(Radius.circular(30.0)),
                         elevation: 5.0,
                         child: MaterialButton(

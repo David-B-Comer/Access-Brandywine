@@ -9,6 +9,7 @@ import 'package:newflutterapp/passport.dart';
 import 'register.dart';
 import 'package:flutter/src/material/colors.dart';
 
+//final databaseReference = Firestore.instance;
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -45,6 +46,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
+  final _auth = FirebaseAuth.instance;
 
   @override
   void dispose() {
@@ -116,8 +118,11 @@ class _MyHomePageState extends State<MyHomePage> {
               text: 'Login with Email',
               icon: Icons.email,
               onPressed: () {
-                signUpWithMail().whenComplete(
-                    () => Navigator.pushNamed(context, PassportPage.id));
+                signUpWithMail()
+                    .whenComplete(
+                        () => Navigator.pushNamed(context, PassportPage.id))
+                    .catchError(
+                        () => Navigator.pushNamed(context, MyHomePage.id));
               },
               backgroundColor: Colors.orange,
             ),
