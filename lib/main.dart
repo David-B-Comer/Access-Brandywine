@@ -69,93 +69,103 @@ class _MyHomePageState extends State<MyHomePage> {
           image: DecorationImage(
               image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              width: 220,
-              height: 40,
-              child: TextFormField(
-                validator: (input) {
-                  if (input.isEmpty) {
-                    return 'Please type an email';
-                  }
-                  return 'Please type';
-                },
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  filled: true,
-                  fillColor: Colors.white,
-                ),
-                controller: emailTextController,
-              ),
-            ),
-            SizedBox(
-              width: 220,
-              height: 40,
-              child: TextFormField(
-                obscureText: true,
-                validator: (input) {
-                  if (input.isEmpty) {
-                    return 'Please type an password';
-                  }
-                  return 'Please type a password';
-                },
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  filled: true,
-                  fillColor: Colors.white,
-                ),
-                controller: passwordTextController,
-              ),
-            ),
-            SizedBox(
-              height: 5.0,
-            ),
-            SignInButtonBuilder(
-              text: 'Login with Email',
-              icon: Icons.email,
-              onPressed: () {
-                signUpWithMail().whenComplete(
-                    () => Navigator.pushNamed(context, PassportPage.id));
-                // .catchError(() => Navigator.pushNamed(context, MyHomePage.id));
-              },
-              backgroundColor: Colors.orange,
-            ),
-            SignInButton(
-              Buttons.Facebook,
-              text: "Login with Facebook",
-              onPressed: () {
-                signUpWithFacebook().whenComplete(
-                    () => Navigator.pushNamed(context, PassportPage.id));
-              },
-            ),
-            SignInButton(
-              Buttons.Google,
-              text: "Login with Google",
-              onPressed: () {
-                _googleSignUp().whenComplete(
-                    () => Navigator.pushNamed(context, PassportPage.id));
-              },
-            ),
-            SizedBox(
-              height: 275,
-            ),
-            SizedBox(
-              width: 220,
-              height: 40,
-              child: RaisedButton(
-                  color: Colors.white,
-                  child: Text(
-                    'Register for Account',
-                    style: TextStyle(color: Colors.grey, fontSize: 14),
+        child: PreferredSize(
+          preferredSize: Size.fromHeight(
+            120.0,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextFormField(
+                  validator: (input) {
+                    if (input.isEmpty) {
+                      return 'Please type an email';
+                    }
+                    return 'Please type';
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Email',
+                    filled: true,
+                    fillColor: Colors.white,
                   ),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(RegistrationPage.id);
-                  }),
-            ),
-            //Navigate to second screen
-          ],
+                  controller: emailTextController,
+                ),
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextFormField(
+                  obscureText: true,
+                  validator: (input) {
+                    if (input.isEmpty) {
+                      return 'Please type an password';
+                    }
+                    return 'Please type a password';
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Password',
+                    filled: true,
+                    fillColor: Colors.white,
+                  ),
+                  controller: passwordTextController,
+                ),
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              SignInButtonBuilder(
+                text: 'Login with Email',
+                icon: Icons.email,
+                onPressed: () {
+                  signUpWithMail()
+                      .whenComplete(
+                          () => Navigator.pushNamed(context, PassportPage.id))
+                      .catchError(
+                          () => Navigator.pushNamed(context, MyHomePage.id));
+                },
+                backgroundColor: Colors.orange,
+              ),
+              SignInButton(
+                Buttons.Facebook,
+                text: "Login with Facebook",
+                onPressed: () {
+                  signUpWithFacebook().whenComplete(
+                      () => Navigator.pushNamed(context, PassportPage.id));
+                },
+              ),
+              SignInButton(
+                Buttons.Google,
+                text: "Login with Google",
+                onPressed: () {
+                  _googleSignUp()
+                      .whenComplete(
+                          () => Navigator.pushNamed(context, PassportPage.id))
+                      .catchError(
+                          () => Navigator.pushNamed(context, MyHomePage.id));
+                },
+              ),
+              SizedBox(
+                height: 275,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: RaisedButton(
+                    color: Colors.white,
+                    child: Text(
+                      'Register for Account',
+                      style: TextStyle(color: Colors.grey, fontSize: 14),
+                    ),
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(RegistrationPage.id);
+                    }),
+              ),
+              //Navigate to second screen
+            ],
+          ),
         ),
       ),
     );
@@ -198,8 +208,11 @@ class _MyHomePageState extends State<MyHomePage> {
         );
         final FirebaseUser user =
             (await FirebaseAuth.instance.signInWithCredential(credential)).user;
-        print('signed in ' + user.displayName);
-        return user;
+        if (user != null) {
+          print('signed in ' + user.displayName);
+          Navigator.pushNamed(context, PassportPage.id);
+          return user;
+        }
       }
     } catch (e) {
       print(e.message);
