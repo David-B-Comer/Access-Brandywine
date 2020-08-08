@@ -14,7 +14,7 @@ class _PassportPageState extends State<PassportPage> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.orange,
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.black,
