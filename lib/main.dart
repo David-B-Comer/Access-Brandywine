@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:newflutterapp/constants.dart';
 import 'package:newflutterapp/passport.dart';
 import 'passport.dart';
@@ -50,6 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String email;
   String password;
   FirebaseUser loggedInUser;
+  bool showSpinner = false;
 
   @override
   Widget build(BuildContext context) {
@@ -63,93 +65,96 @@ class _MyHomePageState extends State<MyHomePage> {
           widget.title,
         ),
       ),
-      body: Container(
-        alignment: Alignment.topCenter,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              width: 220,
-              height: 40,
-              child: TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                },
-                decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
-              ),
-            ),
-            SizedBox(
-              height: 10.0,
-            ),
-            SizedBox(
-              width: 220,
-              height: 40,
-              child: TextField(
-                obscureText: true,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  password = value;
-                },
-                decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your password'),
-              ),
-            ),
-            SizedBox(
-              height: 5.0,
-            ),
-            SignInButtonBuilder(
-              icon: Icons.mail,
-              text: 'Press to login',
-              onPressed: () {
-                signUpWithMail();
-              },
-              backgroundColor: Colors.orange,
-            ),
-            SignInButton(
-              Buttons.Facebook,
-              text: "Login with Facebook",
-              onPressed: () {
-                signUpWithFacebook();
-              },
-            ),
-            SignInButton(
-              Buttons.Google,
-              text: "Login with Google",
-              onPressed: () {
-                _googleSignUp();
-              },
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              width: 220,
-              height: 40,
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                    side: BorderSide(
-                      color: Colors.white,
-                    )),
-                color: Colors.white,
-                child: Text(
-                  'Register for Account',
-                  style: TextStyle(color: Colors.grey, fontSize: 14),
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: Container(
+          alignment: Alignment.topCenter,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    email = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your email'),
                 ),
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(RegistrationPage.id),
               ),
-            ),
-            //Navigate to second screen
-          ],
+              SizedBox(
+                height: 10.0,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    password = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your password'),
+                ),
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              SignInButtonBuilder(
+                icon: Icons.mail,
+                text: 'Press to login',
+                onPressed: () {
+                  signUpWithMail();
+                },
+                backgroundColor: Colors.orange,
+              ),
+              SignInButton(
+                Buttons.Facebook,
+                text: "Login with Facebook",
+                onPressed: () {
+                  signUpWithFacebook();
+                },
+              ),
+              SignInButton(
+                Buttons.Google,
+                text: "Login with Google",
+                onPressed: () {
+                  _googleSignUp();
+                },
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                      side: BorderSide(
+                        color: Colors.white,
+                      )),
+                  color: Colors.white,
+                  child: Text(
+                    'Register for Account',
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                  ),
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(RegistrationPage.id),
+                ),
+              ),
+              //Navigate to second screen
+            ],
+          ),
         ),
       ),
     );
@@ -204,11 +209,17 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> signUpWithMail() async {
+    setState(() {
+      showSpinner = true;
+    });
     try {
       final user = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       if (user != null) {
         Navigator.pushNamed(context, PassportPage.id);
+        setState(() {
+          showSpinner = false;
+        });
       }
     } catch (e) {
       print(e.message);
