@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class PassportPage extends StatefulWidget {
   static String id = 'PassportPage';
@@ -10,6 +11,28 @@ class PassportPage extends StatefulWidget {
 }
 
 class _PassportPageState extends State<PassportPage> {
+  final _auth = FirebaseAuth.instance;
+  FirebaseUser loggedInUser;
+
+  //capture user info when state is initialized
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.email);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,8 +68,9 @@ class _PassportPageState extends State<PassportPage> {
                   SizedBox(
                     height: 30.0,
                   ),
-                  Text(
-                    'Issued: 07/01/2020',
+                  TextField(
+                    obscureText: true,
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,

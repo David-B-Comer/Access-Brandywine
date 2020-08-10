@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:newflutterapp/main.dart';
 import 'package:image_picker/image_picker.dart';
-
 import 'components.dart';
 import 'constants.dart';
 import 'passport.dart';
@@ -25,6 +25,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final _auth = FirebaseAuth.instance;
   String email;
   String password;
+  bool showSpinner = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,65 +39,76 @@ class _RegistrationPageState extends State<RegistrationPage> {
           widget.title,
         ),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              SizedBox(
-                height: 48.0,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  email = value;
-                  //This does something with the user input.
-                },
-                decoration:
-                    kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
-              ),
-              SizedBox(
-                height: 8.0,
-              ),
-              TextField(
-                keyboardType: TextInputType.emailAddress,
-                obscureText: true,
-                textAlign: TextAlign.center,
-                onChanged: (value) {
-                  // This does something with the user input.
-                  password = value;
-                },
-                decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your password'),
-              ),
-              SizedBox(
-                height: 24.0,
-              ),
-              RoundedButton(
-                title: 'Register',
-                onPressed: () async {
-                  try {
-                    final newUser = await _auth.createUserWithEmailAndPassword(
-                        email: email, password: password);
-                    if (newUser != null) {
-                      Navigator.pushNamed(context, PassportPage.id);
-                    }
-                  } catch (e) {
-                    print(e);
-                  }
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                SizedBox(
+                  height: 48.0,
+                ),
+                TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    email = value;
+                    //This does something with the user input.
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your email'),
+                ),
+                SizedBox(
+                  height: 8.0,
+                ),
+                TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    // This does something with the user input.
+                    password = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your password'),
+                ),
+                SizedBox(
+                  height: 24.0,
+                ),
+                RoundedButton(
+                  title: 'Register',
+                  onPressed: () async {
+                    setState(() {
+                      showSpinner = true;
+                    });
+                    try {
+                      final newUser =
+                          await _auth.createUserWithEmailAndPassword(
+                              email: email, password: password);
+                      if (newUser != null) {
+                        Navigator.pushNamed(context, PassportPage.id);
+                      }
 
-                  //Navigator.pushNamed(context, LoginScreen.id);
-                },
-              ),
-            ],
+                      setState(() {
+                        showSpinner = false;
+                      });
+                    } catch (e) {
+                      print(e);
+                    }
+
+                    //Navigator.pushNamed(context, LoginScreen.id);
+                  },
+                ),
+              ],
+            ),
           ),
         ),
       ),
