@@ -11,6 +11,12 @@ import 'package:newflutterapp/passport.dart';
 import 'passport.dart';
 import 'register.dart';
 import 'package:flutter/src/material/colors.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth_web/firebase_auth_web.dart';
+import 'package:cloud_firestore_web/cloud_firestore_web.dart';
+
+
+final databaseReference = Firestore.instance;
 
 //final databaseReference = Firestore.instance;
 void main() => runApp(MyApp());
