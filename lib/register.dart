@@ -1,13 +1,17 @@
-import 'dart:io';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:newflutterapp/main.dart';
 import 'package:image_picker/image_picker.dart';
+import 'components.dart';
+import 'constants.dart';
+import 'passport.dart';
 
 class RegistrationPage extends StatefulWidget {
+  TextEditingController textFieldController = TextEditingController();
   static String id = 'registration';
 
   String get title => 'Registration Page';
@@ -16,6 +20,177 @@ class RegistrationPage extends StatefulWidget {
   _RegistrationPageState createState() => _RegistrationPageState();
 }
 
+class _RegistrationPageState extends State<RegistrationPage> {
+  // create a new authentication instance
+  final _auth = FirebaseAuth.instance;
+  final _firestore = Firestore.instance;
+  FirebaseUser loggedInUser;
+  String email;
+  String password;
+  bool showSpinner = false;
+  String firstName;
+  String lastName;
+  String phoneNumber;
+  String photo;
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.email);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.black,
+        title: Text(
+          widget.title,
+        ),
+      ),
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: Container(
+          alignment: Alignment.topCenter,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    email = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your email'),
+                ),
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    password = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your password'),
+                ),
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    firstName = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your first name'),
+                ),
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    lastName = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your last name'),
+                ),
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                      side: BorderSide(
+                        color: Colors.white,
+                      )),
+                  color: Colors.white,
+                  child: Text(
+                    'Register for Account',
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                  ),
+                  onPressed: () async {
+                    _firestore.collection('visitors').add({
+                      'email': email,
+                      'firstName': firstName,
+                      'lastName': lastName,
+                      'phoneNumber': phoneNumber,
+                    });
+                    setState(() {
+                      showSpinner = true;
+                    });
+                    try {
+                      final newUser =
+                          await _auth.createUserWithEmailAndPassword(
+                              email: email, password: password);
+                      if (newUser != null) {
+                        Navigator.pushNamed(context, PassportPage.id);
+                      }
+
+                      setState(() {
+                        showSpinner = false;
+                      });
+                    } catch (e) {
+                      print(e);
+                    }
+
+                    //Navigator.pushNamed(context, LoginScreen.id);
+                  },
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/*
 class _RegistrationPageState extends State<RegistrationPage> {
   File _image;
 
@@ -279,6 +454,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
     );
   }
 }
+
+ */
 
 /*
 Flexible(

@@ -1,7 +1,22 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+/*
+var snapshots = _firestore
+        .collection('profile')
+        .document(currentUserID)
+        .collection('posts')
+        .getDocuments();
+
+await snapshots.forEach((document) async {
+  document.reference.updateData(<String, dynamic>{
+    name: this.name
+  });
+})
+ */
 class PassportPage extends StatefulWidget {
   static String id = 'PassportPage';
 
@@ -10,6 +25,30 @@ class PassportPage extends StatefulWidget {
 }
 
 class _PassportPageState extends State<PassportPage> {
+  final _auth = FirebaseAuth.instance;
+  FirebaseUser loggedInUser;
+  String emailDB;
+  String userName;
+
+  //capture user info when state is initialized
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.email);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,11 +62,13 @@ class _PassportPageState extends State<PassportPage> {
         body: SafeArea(
           child: Center(
             child: Padding(
-              padding: EdgeInsets.only(top: 20.0),
+              padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
               child: Column(
                 children: <Widget>[
-                  Text(
-                    'Desa Burton',
+                  TextField(
+                    onChanged: (value) {
+                      userName = value;
+                    },
                     style: TextStyle(
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
@@ -36,17 +77,19 @@ class _PassportPageState extends State<PassportPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 5,
                   ),
                   CircleAvatar(
                     radius: 120.0,
                     backgroundImage: AssetImage('images/Desa.jpg'),
                   ),
                   SizedBox(
-                    height: 30.0,
+                    height: 5.0,
                   ),
-                  Text(
-                    'Issued: 07/01/2020',
+                  TextField(
+                    onChanged: (value) {
+                      emailDB = value;
+                    },
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
@@ -55,7 +98,7 @@ class _PassportPageState extends State<PassportPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 5.0,
                     width: 150.0,
                     child: Divider(
                       color: Colors.teal.shade100,
@@ -71,7 +114,7 @@ class _PassportPageState extends State<PassportPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 5.0,
                     width: 150.0,
                     child: Divider(
                       color: Colors.teal.shade100,
@@ -87,7 +130,7 @@ class _PassportPageState extends State<PassportPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 5.0,
                     width: 150.0,
                     child: Divider(
                       color: Colors.teal.shade100,
@@ -103,41 +146,47 @@ class _PassportPageState extends State<PassportPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 20.0,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: <Widget>[
-                      FlatButton(
+                      RaisedButton(
+                          color: Colors.white38,
                           onPressed: () => launch("tel://9167051794"),
                           child: Text('Call me')),
-                      FlatButton(
-                          onPressed: () =>
-                              launch("email://apehow111@gmail.com"),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      RaisedButton(
+                          color: Colors.white38,
+                          onPressed: () => launch("mailto:apehow111@gmail.com"),
                           child: Text('Email me')),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      RaisedButton(
+                          color: Colors.white38,
+                          onPressed: () => launch("sms://9167051794"),
+                          child: Text('Text me')),
                     ],
                   ),
                   SizedBox(
                     height: 10.0,
                   ),
                   Expanded(
-                    child: Container(
-                      margin: EdgeInsets.only(bottom: 30),
-                      child: Material(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                        elevation: 5.0,
-                        child: MaterialButton(
-                          onPressed: () {
-                            // push the current context to the routeName
-                            Navigator.pushNamed(context, '/');
-                          },
-                          minWidth: 200.0,
-                          height: 20.0,
-                          child: Text(
-                            'Logout',
-                          ),
+                    child: Align(
+                      alignment: FractionalOffset.bottomCenter,
+                      child: RaisedButton(
+                        color: Colors.white38,
+                        onPressed: () {
+                          _auth.signOut();
+                          // push the current context to the routeName
+                          Navigator.pushNamed(context, '/');
+                        },
+                        child: Text(
+                          'Logout',
                         ),
                       ),
                     ),

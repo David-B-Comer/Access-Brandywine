@@ -5,7 +5,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
+import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:newflutterapp/constants.dart';
 import 'package:newflutterapp/passport.dart';
+import 'passport.dart';
 import 'register.dart';
 import 'package:flutter/src/material/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,6 +18,7 @@ import 'package:cloud_firestore_web/cloud_firestore_web.dart';
 
 final databaseReference = Firestore.instance;
 
+//final databaseReference = Firestore.instance;
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -49,18 +53,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final emailTextController = TextEditingController();
-  final passwordTextController = TextEditingController();
-
-  @override
-  void dispose() {
-    emailTextController.dispose();
-    passwordTextController.dispose();
-    super.dispose();
-  }
+  final _auth = FirebaseAuth.instance;
+  String email;
+  String password;
+  FirebaseUser loggedInUser;
+  bool showSpinner = false;
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+    ]);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
@@ -68,99 +71,96 @@ class _MyHomePageState extends State<MyHomePage> {
           widget.title,
         ),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              width: 220,
-              height: 40,
-              child: TextFormField(
-                validator: (input) {
-                  if (input.isEmpty) {
-                    return 'Please type an email';
-                  }
-                  return 'Please type';
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        child: Container(
+          alignment: Alignment.topCenter,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    email = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your email'),
+                ),
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    password = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your password'),
+                ),
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              SignInButtonBuilder(
+                icon: Icons.mail,
+                text: 'Press to login',
+                onPressed: () {
+                  signUpWithMail();
                 },
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  filled: true,
-                  fillColor: Colors.white,
-                ),
-                controller: emailTextController,
+                backgroundColor: Colors.orange,
               ),
-            ),
-            SizedBox(
-              width: 220,
-              height: 40,
-              child: TextFormField(
-                obscureText: true,
-                validator: (input) {
-                  if (input.isEmpty) {
-                    return 'Please type an password';
-                    // ignore: missing_return
-                  }
-                  return 'Please type a password';
+              SignInButton(
+                Buttons.Facebook,
+                text: "Login with Facebook",
+                onPressed: () {
+                  signUpWithFacebook();
                 },
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  filled: true,
-                  fillColor: Colors.white,
-                ),
-                controller: passwordTextController,
               ),
-            ),
-            SizedBox(
-              height: 5.0,
-            ),
-            SignInButtonBuilder(
-              text: 'Login with Email',
-              icon: Icons.email,
-              onPressed: () {
-                signUpWithMail().whenComplete(
-                    () => Navigator.pushNamed(context, PassportPage.id));
-              },
-              backgroundColor: Colors.orange,
-            ),
-            SignInButton(
-              Buttons.Facebook,
-              text: "Login with Facebook",
-              onPressed: () {
-                signUpWithFacebook().whenComplete(
-                    () => Navigator.pushNamed(context, PassportPage.id));
-              },
-            ),
-            SignInButton(
-              Buttons.Google,
-              text: "Login with Google",
-              onPressed: () {
-                _googleSignUp().whenComplete(
-                    () => Navigator.pushNamed(context, PassportPage.id));
-              },
-            ),
-            SizedBox(
-              height: 275,
-            ),
-            SizedBox(
-              width: 220,
-              height: 40,
-              child: RaisedButton(
-                color: Colors.white,
-                child: Text(
-                  'Register for Account',
-                  style: TextStyle(color: Colors.grey, fontSize: 14),
-                ),
-                onPressed: () =>
-                    Navigator.of(context).pushNamed(RegistrationPage.id),
+              SignInButton(
+                Buttons.Google,
+                text: "Login with Google",
+                onPressed: () {
+                  _googleSignUp();
+                },
               ),
-            ),
-            //Navigate to second screen
-          ],
+              SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                      side: BorderSide(
+                        color: Colors.white,
+                      )),
+                  color: Colors.white,
+                  child: Text(
+                    'Register for Account',
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                  ),
+                  onPressed: () =>
+                      Navigator.of(context).pushNamed(RegistrationPage.id),
+                ),
+              ),
+              //Navigate to second screen
+            ],
+          ),
         ),
       ),
     );
@@ -186,7 +186,9 @@ class _MyHomePageState extends State<MyHomePage> {
           (await _auth.signInWithCredential(credential)).user;
       print("signed in " + user.displayName);
 
-      return user;
+      if (user != null) {
+        Navigator.pushNamed(context, PassportPage.id);
+      }
     } catch (e) {
       print(e.message);
     }
@@ -204,7 +206,8 @@ class _MyHomePageState extends State<MyHomePage> {
         final FirebaseUser user =
             (await FirebaseAuth.instance.signInWithCredential(credential)).user;
         print('signed in ' + user.displayName);
-        return user;
+
+        Navigator.pushNamed(context, PassportPage.id);
       }
     } catch (e) {
       print(e.message);
@@ -212,17 +215,18 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> signUpWithMail() async {
+    setState(() {
+      showSpinner = true;
+    });
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailTextController.text,
-          password: passwordTextController.text);
-      showDialog(
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              content: Text('Success sign up'),
-            );
-          });
+      final user = await _auth.signInWithEmailAndPassword(
+          email: email, password: password);
+      if (user != null) {
+        Navigator.pushNamed(context, PassportPage.id);
+        setState(() {
+          showSpinner = false;
+        });
+      }
     } catch (e) {
       print(e.message);
       showDialog(
