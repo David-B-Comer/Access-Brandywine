@@ -65,13 +65,14 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       body: Container(
-        alignment: Alignment.center,
+        alignment: Alignment.topCenter,
         decoration: BoxDecoration(
           image: DecorationImage(
               image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
               width: 220,
@@ -90,6 +91,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 controller: emailTextController,
               ),
+            ),
+            SizedBox(
+              height: 10.0,
             ),
             SizedBox(
               width: 220,
@@ -143,12 +147,17 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             SizedBox(
-              height: 275,
+              height: 5,
             ),
             SizedBox(
               width: 220,
               height: 40,
               child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                    side: BorderSide(
+                      color: Colors.white,
+                    )),
                 color: Colors.white,
                 child: Text(
                   'Register for Account',
