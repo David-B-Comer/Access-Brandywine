@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,6 +11,7 @@ import 'constants.dart';
 import 'passport.dart';
 
 class RegistrationPage extends StatefulWidget {
+  TextEditingController textFieldController = TextEditingController();
   static String id = 'registration';
 
   String get title => 'Registration Page';
@@ -23,9 +23,33 @@ class RegistrationPage extends StatefulWidget {
 class _RegistrationPageState extends State<RegistrationPage> {
   // create a new authentication instance
   final _auth = FirebaseAuth.instance;
+  final _firestore = Firestore.instance;
+  FirebaseUser loggedInUser;
   String email;
   String password;
   bool showSpinner = false;
+  String firstName;
+  String lastName;
+  String phoneNumber;
+  String photo;
+
+  @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  void getCurrentUser() async {
+    try {
+      final user = await _auth.currentUser();
+      if (user != null) {
+        loggedInUser = user;
+        print(loggedInUser.email);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,50 +66,100 @@ class _RegistrationPageState extends State<RegistrationPage> {
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         child: Container(
-          alignment: Alignment.center,
+          alignment: Alignment.topCenter,
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
           ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                SizedBox(
-                  height: 48.0,
-                ),
-                TextField(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
                   keyboardType: TextInputType.emailAddress,
                   textAlign: TextAlign.center,
                   onChanged: (value) {
                     email = value;
-                    //This does something with the user input.
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Enter your email'),
                 ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                TextField(
-                  keyboardType: TextInputType.emailAddress,
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
                   obscureText: true,
                   textAlign: TextAlign.center,
                   onChanged: (value) {
-                    // This does something with the user input.
                     password = value;
                   },
                   decoration: kTextFieldDecoration.copyWith(
                       hintText: 'Enter your password'),
                 ),
-                SizedBox(
-                  height: 24.0,
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    firstName = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your first name'),
                 ),
-                RoundedButton(
-                  title: 'Register',
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: TextField(
+                  obscureText: true,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {
+                    lastName = value;
+                  },
+                  decoration: kTextFieldDecoration.copyWith(
+                      hintText: 'Enter your last name'),
+                ),
+              ),
+              SizedBox(
+                height: 5.0,
+              ),
+              SizedBox(
+                width: 220,
+                height: 40,
+                child: RaisedButton(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                      side: BorderSide(
+                        color: Colors.white,
+                      )),
+                  color: Colors.white,
+                  child: Text(
+                    'Register for Account',
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                  ),
                   onPressed: () async {
+                    _firestore.collection('visitors').add({
+                      'email': email,
+                      'firstName': firstName,
+                      'lastName': lastName,
+                      'phoneNumber': phoneNumber,
+                    });
                     setState(() {
                       showSpinner = true;
                     });
@@ -107,8 +181,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     //Navigator.pushNamed(context, LoginScreen.id);
                   },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

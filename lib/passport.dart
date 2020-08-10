@@ -2,7 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+/*
+var snapshots = _firestore
+        .collection('profile')
+        .document(currentUserID)
+        .collection('posts')
+        .getDocuments();
+
+await snapshots.forEach((document) async {
+  document.reference.updateData(<String, dynamic>{
+    name: this.name
+  });
+})
+ */
 class PassportPage extends StatefulWidget {
   static String id = 'PassportPage';
 
@@ -13,6 +27,8 @@ class PassportPage extends StatefulWidget {
 class _PassportPageState extends State<PassportPage> {
   final _auth = FirebaseAuth.instance;
   FirebaseUser loggedInUser;
+  String emailDB;
+  String userName;
 
   //capture user info when state is initialized
   @override
@@ -49,8 +65,10 @@ class _PassportPageState extends State<PassportPage> {
               padding: EdgeInsets.only(top: 20.0, bottom: 20.0),
               child: Column(
                 children: <Widget>[
-                  Text(
-                    'Desa Burton',
+                  TextField(
+                    onChanged: (value) {
+                      userName = value;
+                    },
                     style: TextStyle(
                       fontSize: 30.0,
                       fontWeight: FontWeight.bold,
@@ -59,18 +77,19 @@ class _PassportPageState extends State<PassportPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 5,
                   ),
                   CircleAvatar(
                     radius: 120.0,
                     backgroundImage: AssetImage('images/Desa.jpg'),
                   ),
                   SizedBox(
-                    height: 30.0,
+                    height: 5.0,
                   ),
                   TextField(
-                    obscureText: true,
-                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      emailDB = value;
+                    },
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
@@ -79,7 +98,7 @@ class _PassportPageState extends State<PassportPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 5.0,
                     width: 150.0,
                     child: Divider(
                       color: Colors.teal.shade100,
@@ -95,7 +114,7 @@ class _PassportPageState extends State<PassportPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 5.0,
                     width: 150.0,
                     child: Divider(
                       color: Colors.teal.shade100,
@@ -111,7 +130,7 @@ class _PassportPageState extends State<PassportPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 10.0,
+                    height: 5.0,
                     width: 150.0,
                     child: Divider(
                       color: Colors.teal.shade100,
@@ -162,6 +181,7 @@ class _PassportPageState extends State<PassportPage> {
                       child: RaisedButton(
                         color: Colors.white38,
                         onPressed: () {
+                          _auth.signOut();
                           // push the current context to the routeName
                           Navigator.pushNamed(context, '/');
                         },
