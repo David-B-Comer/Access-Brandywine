@@ -81,6 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
               width: 220,
               height: 40,
               child: TextFormField(
+                keyboardType: TextInputType.emailAddress,
                 validator: (input) {
                   if (input.isEmpty) {
                     return 'Please type an email';
@@ -108,7 +109,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     return 'Please type an password';
                     // ignore: missing_return
                   }
-                  return 'Please type a password';
                 },
                 decoration: InputDecoration(
                   labelText: 'Password',

@@ -67,6 +67,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 height: 8.0,
               ),
               TextField(
+                keyboardType: TextInputType.emailAddress,
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
