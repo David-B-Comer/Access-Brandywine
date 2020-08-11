@@ -138,36 +138,45 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.zero,
-                    side: BorderSide(
-                      color: Colors.white,
-                    )),
-                color: Colors.white,
-                child: Text(
-                  'Register for Account',
-                  style: TextStyle(color: Colors.grey, fontSize: 14),
-                ),
-                onPressed: () async {
-                  _firestore.collection('visitors').add({
-                    'email': email,
-                    'firstName': firstName,
-                    'lastName': lastName,
-                    'phoneNumber': phoneNumber,
-                  });
-                  try {
-                    final newUser = await _auth.createUserWithEmailAndPassword(
-                        email: email, password: password);
-                    if (newUser != null) {
-                      Navigator.pushNamed(context, PassportPage.id);
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.zero,
+                      side: BorderSide(
+                        color: Colors.white,
+                      )),
+                  color: Colors.white,
+                  child: Text(
+                    'Register for Account',
+                    style: TextStyle(color: Colors.grey, fontSize: 14),
+                  ),
+                  onPressed: () async {
+                    _firestore.collection('visitors').add({
+                      'email': email,
+                      'firstName': firstName,
+                      'lastName': lastName,
+                      'phoneNumber': phoneNumber,
+                    });
+                    try {
+                      final newUser =
+                          await _auth.createUserWithEmailAndPassword(
+                              email: email, password: password);
+                      if (newUser != null) {
+                        Navigator.pushNamed(context, PassportPage.id);
+                      }
+                    } catch (e) {
+                      print(e.message);
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            return AlertDialog(
+                              content: Text(e.message),
+                            );
+                          });
                     }
-                  } catch (e) {
-                    print(e);
                   }
 
                   //Navigator.pushNamed(context, LoginScreen.id);
-                },
-              ),
+
+                  ),
             ),
           ],
         ),
