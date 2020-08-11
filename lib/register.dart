@@ -164,14 +164,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       }
                     } catch (e) {
                       print(e.message);
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              content: Text(e.message),
-                            );
-                          });
                     }
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Text(
+                                'That email may already be in use. Please re-enter information'),
+                          );
+                        });
                   }
 
                   //Navigator.pushNamed(context, LoginScreen.id);
