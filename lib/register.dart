@@ -137,53 +137,59 @@ class _RegistrationPageState extends State<RegistrationPage> {
             SizedBox(
               width: 220,
               height: 40,
+              child: TextField(
+                obscureText: true,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  phoneNumber = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your cell #'),
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            SizedBox(
+              width: 220,
+              height: 40,
               child: RaisedButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                      side: BorderSide(
-                        color: Colors.white,
-                      )),
-                  color: Colors.white,
-                  child: Text(
-                    'Register for Account',
-                    style: TextStyle(color: Colors.grey, fontSize: 14),
-                  ),
-                  onPressed: () async {
-                    _firestore.collection('visitors').add({
-                      'email': email,
-                      'firstName': firstName,
-                      'lastName': lastName,
-                      'phoneNumber': phoneNumber,
-                    });
-                    try {
-                      final newUser =
-                          await _auth.createUserWithEmailAndPassword(
-                              email: email, password: password);
-                      if (newUser != null) {
-                        Navigator.pushNamed(context, PassportPage.id);
-                      }
-                    } catch (e) {
-                      print(e.message);
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                    side: BorderSide(
+                      color: Colors.white,
+                    )),
+                color: Colors.white,
+                child: Text(
+                  'Register for Account',
+                  style: TextStyle(color: Colors.grey, fontSize: 14),
+                ),
+                onPressed: () async {
+                  _firestore.collection('visitors').add({
+                    'email': email,
+                    'firstName': firstName,
+                    'lastName': lastName,
+                    'phoneNumber': phoneNumber,
+                  });
+                  try {
+                    final newUser = await _auth.createUserWithEmailAndPassword(
+                        email: email, password: password);
+                    if (newUser != null) {
+                      Navigator.pushNamed(context, PassportPage.id);
                     }
-                    showDialog(
-                        context: context,
-                        builder: (context) {
-                          return AlertDialog(
-                            content: Text(
-                                'That email may already be in use. Please re-enter information'),
-                          );
-                        });
+                  } catch (e) {
+                    print(e.message);
                   }
-
-                  //Navigator.pushNamed(context, LoginScreen.id);
-
-                  ),
+                },
+              ),
             ),
           ],
         ),
       ),
     );
   }
+
+  //Navigator.pushNamed(context, LoginScreen.id);}
 }
 
 /*
