@@ -4,9 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
-import 'package:newflutterapp/main.dart';
-import 'package:image_picker/image_picker.dart';
-import 'components.dart';
 import 'constants.dart';
 import 'passport.dart';
 
@@ -63,131 +60,136 @@ class _RegistrationPageState extends State<RegistrationPage> {
           widget.title,
         ),
       ),
-      body: ModalProgressHUD(
-        inAsyncCall: showSpinner,
-        child: Container(
-          alignment: Alignment.topCenter,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              SizedBox(
-                width: 220,
-                height: 40,
-                child: TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    email = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your email'),
+      body: Container(
+        alignment: Alignment.topCenter,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('images/bw.jpg'), fit: BoxFit.cover),
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              width: 220,
+              height: 40,
+              child: TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  email = value;
+                },
+                decoration:
+                    kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            SizedBox(
+              width: 220,
+              height: 40,
+              child: TextField(
+                obscureText: true,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  password = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your password'),
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            SizedBox(
+              width: 220,
+              height: 40,
+              child: TextField(
+                keyboardType: TextInputType.emailAddress,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  firstName = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your first name'),
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            SizedBox(
+              width: 220,
+              height: 40,
+              child: TextField(
+                obscureText: true,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  lastName = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your last name'),
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            SizedBox(
+              width: 220,
+              height: 40,
+              child: TextField(
+                obscureText: true,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  phoneNumber = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your cell #'),
+              ),
+            ),
+            SizedBox(
+              height: 5.0,
+            ),
+            SizedBox(
+              width: 220,
+              height: 40,
+              child: RaisedButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.zero,
+                    side: BorderSide(
+                      color: Colors.white,
+                    )),
+                color: Colors.white,
+                child: Text(
+                  'Register for Account',
+                  style: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
-              ),
-              SizedBox(
-                height: 5.0,
-              ),
-              SizedBox(
-                width: 220,
-                height: 40,
-                child: TextField(
-                  obscureText: true,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    password = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your password'),
-                ),
-              ),
-              SizedBox(
-                height: 5.0,
-              ),
-              SizedBox(
-                width: 220,
-                height: 40,
-                child: TextField(
-                  keyboardType: TextInputType.emailAddress,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    firstName = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your first name'),
-                ),
-              ),
-              SizedBox(
-                height: 5.0,
-              ),
-              SizedBox(
-                width: 220,
-                height: 40,
-                child: TextField(
-                  obscureText: true,
-                  textAlign: TextAlign.center,
-                  onChanged: (value) {
-                    lastName = value;
-                  },
-                  decoration: kTextFieldDecoration.copyWith(
-                      hintText: 'Enter your last name'),
-                ),
-              ),
-              SizedBox(
-                height: 5.0,
-              ),
-              SizedBox(
-                width: 220,
-                height: 40,
-                child: RaisedButton(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero,
-                      side: BorderSide(
-                        color: Colors.white,
-                      )),
-                  color: Colors.white,
-                  child: Text(
-                    'Register for Account',
-                    style: TextStyle(color: Colors.grey, fontSize: 14),
-                  ),
-                  onPressed: () async {
-                    _firestore.collection('visitors').add({
-                      'email': email,
-                      'firstName': firstName,
-                      'lastName': lastName,
-                      'phoneNumber': phoneNumber,
-                    });
-                    setState(() {
-                      showSpinner = true;
-                    });
-                    try {
-                      final newUser =
-                          await _auth.createUserWithEmailAndPassword(
-                              email: email, password: password);
-                      if (newUser != null) {
-                        Navigator.pushNamed(context, PassportPage.id);
-                      }
-
-                      setState(() {
-                        showSpinner = false;
-                      });
-                    } catch (e) {
-                      print(e);
+                onPressed: () async {
+                  _firestore.collection('visitors').add({
+                    'email': email,
+                    'firstName': firstName,
+                    'lastName': lastName,
+                    'phoneNumber': phoneNumber,
+                  });
+                  try {
+                    final newUser = await _auth.createUserWithEmailAndPassword(
+                        email: email, password: password);
+                    if (newUser != null) {
+                      Navigator.pushNamed(context, PassportPage.id);
                     }
-
-                    //Navigator.pushNamed(context, LoginScreen.id);
-                  },
-                ),
+                  } catch (e) {
+                    print(e.message);
+                  }
+                },
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
+
+  //Navigator.pushNamed(context, LoginScreen.id);}
 }
 
 /*
