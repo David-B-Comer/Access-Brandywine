@@ -106,7 +106,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: TextField(
-                keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   firstName = value;
@@ -138,6 +137,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: TextField(
+                keyboardType: TextInputType.number,
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -176,10 +176,21 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         email: email, password: password);
                     if (newUser != null) {
                       Navigator.pushNamed(context, PassportPage.id);
+                    } else {
+                      Navigator.pushNamed(context, RegistrationPage.id);
                     }
                   } catch (e) {
                     print(e.message);
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Text(
+                                'Email may already be in use, or invalid info has been entered. Please re-enter information'),
+                          );
+                        });
                   }
+                  ;
                 },
               ),
             ),
