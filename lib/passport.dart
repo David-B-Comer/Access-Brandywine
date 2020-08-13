@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:newflutterapp/main.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -183,7 +184,7 @@ class _PassportPageState extends State<PassportPage> {
                         onPressed: () {
                           _auth.signOut();
                           // push the current context to the routeName
-                          Navigator.pushNamed(context, '/');
+                          Navigator.pushNamed(context, MyHomePage.id);
                         },
                         child: Text(
                           'Logout',

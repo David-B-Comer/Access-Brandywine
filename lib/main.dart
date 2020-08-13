@@ -220,7 +220,9 @@ class _MyHomePageState extends State<MyHomePage> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              content: Text(e.message),
+              content: Text(
+                'An error occurred. Please re-enter email and password',
+              ),
             );
           });
     }
