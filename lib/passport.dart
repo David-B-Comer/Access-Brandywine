@@ -184,7 +184,8 @@ class _PassportPageState extends State<PassportPage> {
                         onPressed: () {
                           _auth.signOut();
                           // push the current context to the routeName
-                          Navigator.pushNamed(context, MyHomePage.id);
+                          Navigator.pushNamed(context, '/');
+                          print('logged out');
                         },
                         child: Text(
                           'Logout',

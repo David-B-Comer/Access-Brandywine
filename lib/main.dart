@@ -79,10 +79,11 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             SizedBox(
               width: 220,
-              height: 40,
+              height: 36,
               child: TextField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 14),
                 onChanged: (value) {
                   email = value;
                 },
@@ -95,10 +96,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SizedBox(
               width: 220,
-              height: 40,
+              height: 36,
               child: TextField(
                 obscureText: true,
                 textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 14),
                 onChanged: (value) {
                   password = value;
                 },
@@ -131,6 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 _googleSignUp();
               },
             ),
+
             SizedBox(
               height: 5,
             ),
@@ -141,7 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                     side: BorderSide(
-                      color: Colors.white,
+                      color: Colors.green,
                     )),
                 color: Colors.white,
                 child: Text(
@@ -221,8 +224,7 @@ class _MyHomePageState extends State<MyHomePage> {
           builder: (context) {
             return AlertDialog(
               content: Text(
-                'An error occurred. Please re-enter email and password',
-              ),
+                  'An error occurred. Please re-enter email and password or register for an account'),
             );
           });
     }

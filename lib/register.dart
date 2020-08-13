@@ -74,6 +74,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: TextField(
+                style: TextStyle(fontSize: 14),
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -90,6 +91,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: TextField(
+                style: TextStyle(fontSize: 14),
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -106,6 +108,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: TextField(
+                style: TextStyle(fontSize: 14),
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   firstName = value;
@@ -121,6 +124,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: TextField(
+                style: TextStyle(fontSize: 14),
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -139,12 +143,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
               child: TextField(
                 keyboardType: TextInputType.number,
                 obscureText: true,
+                style: TextStyle(color: Colors.black, fontSize: 14),
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   phoneNumber = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your cell #'),
+                    hintText: 'Enter your phone number'),
               ),
             ),
             SizedBox(
@@ -157,7 +162,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                     side: BorderSide(
-                      color: Colors.white,
+                      color: Colors.green,
                     )),
                 color: Colors.white,
                 child: Text(
@@ -190,7 +195,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           );
                         });
                   }
-                  ;
                 },
               ),
             ),
