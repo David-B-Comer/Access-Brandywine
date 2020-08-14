@@ -3,12 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'constants.dart';
 import 'passport.dart';
 
 class RegistrationPage extends StatefulWidget {
-  TextEditingController textFieldController = TextEditingController();
   static String id = 'registration';
 
   String get title => 'Registration Page';
