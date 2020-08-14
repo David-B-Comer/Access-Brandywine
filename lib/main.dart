@@ -6,23 +6,23 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+//import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:newflutterapp/constants.dart';
 import 'package:newflutterapp/passport.dart';
 import 'passport.dart';
 import 'register.dart';
 import 'package:flutter/src/material/colors.dart';
-import 'package:newflutterapp/generated_plugin_registrant.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth_web/firebase_auth_web.dart';
-import 'package:cloud_firestore_web/cloud_firestore_web.dart';
-
+//import 'package:newflutterapp/generated_plugin_registrant.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:firebase_auth_web/firebase_auth_web.dart';
+//import 'package:cloud_firestore_web/cloud_firestore_web.dart';
 
 final databaseReference = Firestore.instance;
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -83,10 +83,11 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             SizedBox(
               width: 220,
-              height: 40,
+              height: 36,
               child: TextField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 14),
                 onChanged: (value) {
                   email = value;
                 },
@@ -99,10 +100,11 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             SizedBox(
               width: 220,
-              height: 40,
+              height: 36,
               child: TextField(
                 obscureText: true,
                 textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 14),
                 onChanged: (value) {
                   password = value;
                 },
@@ -135,6 +137,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 _googleSignUp();
               },
             ),
+
             SizedBox(
               height: 5,
             ),
@@ -145,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                     side: BorderSide(
-                      color: Colors.white,
+                      color: Colors.green,
                     )),
                 color: Colors.white,
                 child: Text(
@@ -224,7 +227,8 @@ class _MyHomePageState extends State<MyHomePage> {
           context: context,
           builder: (context) {
             return AlertDialog(
-              content: Text(e.message),
+              content: Text(
+                  'An error occurred. Please re-enter email and password or register for an account'),
             );
           });
     }

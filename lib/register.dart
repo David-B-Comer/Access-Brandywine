@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
-import 'package:modal_progress_hud/modal_progress_hud.dart';
+//import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'constants.dart';
 import 'passport.dart';
 
+// ignore: must_be_immutable
 class RegistrationPage extends StatefulWidget {
-  TextEditingController textFieldController = TextEditingController();
   static String id = 'registration';
 
   String get title => 'Registration Page';
@@ -74,6 +74,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: TextField(
+                style: TextStyle(fontSize: 14),
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -90,6 +91,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: TextField(
+                style: TextStyle(fontSize: 14),
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -106,7 +108,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: TextField(
-                keyboardType: TextInputType.emailAddress,
+                style: TextStyle(fontSize: 14),
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   firstName = value;
@@ -122,6 +124,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: TextField(
+                style: TextStyle(fontSize: 14),
                 obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -138,13 +141,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
               width: 220,
               height: 40,
               child: TextField(
+                keyboardType: TextInputType.number,
                 obscureText: true,
+                style: TextStyle(color: Colors.black, fontSize: 14),
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   phoneNumber = value;
                 },
                 decoration: kTextFieldDecoration.copyWith(
-                    hintText: 'Enter your cell #'),
+                    hintText: 'Enter your phone number'),
               ),
             ),
             SizedBox(
@@ -157,7 +162,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.zero,
                     side: BorderSide(
-                      color: Colors.white,
+                      color: Colors.green,
                     )),
                 color: Colors.white,
                 child: Text(
@@ -176,9 +181,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
                         email: email, password: password);
                     if (newUser != null) {
                       Navigator.pushNamed(context, PassportPage.id);
+                    } else {
+                      Navigator.pushNamed(context, RegistrationPage.id);
                     }
                   } catch (e) {
                     print(e.message);
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            content: Text(
+                                'Email may already be in use, or invalid info has been entered. Please re-enter information'),
+                          );
+                        });
                   }
                 },
               ),
