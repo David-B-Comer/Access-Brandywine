@@ -11,7 +11,7 @@ import 'package:newflutterapp/constants.dart';
 import 'package:newflutterapp/passport.dart';
 import 'passport.dart';
 import 'register.dart';
-//import 'package:flutter/src/material/colors.dart';
+import 'package:flutter/src/material/colors.dart';
 //import 'package:newflutterapp/generated_plugin_registrant.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:firebase_auth_web/firebase_auth_web.dart';
