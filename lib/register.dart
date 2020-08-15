@@ -48,6 +48,31 @@ class _RegistrationPageState extends State<RegistrationPage> {
     }
   }
 
+  AlertDialog alert = AlertDialog(
+    title: Center(
+      child: Text(
+        'Alert',
+        style: TextStyle(
+          color: Colors.red,
+        ),
+      ),
+    ),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        Container(
+          child: Text(
+            'Please complete all fields',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              color: Colors.red,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
@@ -170,7 +195,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   style: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
                 onPressed: () async {
-                  _firestore.collection('visitors').add({
+                  _firestore.collection('guests').add({
                     'email': email,
                     'firstName': firstName,
                     'lastName': lastName,
@@ -179,10 +204,18 @@ class _RegistrationPageState extends State<RegistrationPage> {
                   try {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
-                    if (newUser != null) {
+                    if ((newUser != null) &&
+                        (firstName != null) &&
+                        (lastName != null) &&
+                        (phoneNumber != null)) {
                       Navigator.pushNamed(context, PassportPage.id);
                     } else {
                       Navigator.pushNamed(context, RegistrationPage.id);
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return alert;
+                          });
                     }
                   } catch (e) {
                     print(e.message);
@@ -203,7 +236,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
       ),
     );
   }
-
   //Navigator.pushNamed(context, LoginScreen.id);}
 }
 
@@ -220,314 +252,4 @@ class _RegistrationPageState extends State<RegistrationPage> {
     });
   }
 
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-    ]);
-
-    return MaterialApp(
-      title: 'Registration Page',
-      home: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('images/bw4.jpg'), fit: BoxFit.cover)),
-        child: Scaffold(
-          backgroundColor: Color.fromRGBO(225, 225, 225, .58),
-          appBar: AppBar(
-            centerTitle: true,
-            backgroundColor: Colors.black,
-            title: Text(
-              widget.title,
-            ),
-          ),
-          body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                SizedBox(
-                  height: 15.0,
-                ),
-                Flexible(
-                  flex: 2,
-                  child: TextField(
-                    style: TextStyle(
-                        color: Colors.black87, fontWeight: FontWeight.bold),
-                    onChanged: (value) {
-                      //Do something with the user input.
-                    },
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color.fromRGBO(225, 225, 225, .2),
-                      hintText: 'Enter your first name',
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 20.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Flexible(
-                  flex: 3,
-                  child: TextField(
-                    style: TextStyle(
-                        color: Colors.black87, fontWeight: FontWeight.bold),
-                    onChanged: (value) {
-                      //Do something with the user input.
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Enter your last name',
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 20.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Flexible(
-                  flex: 3,
-                  child: TextField(
-                    style: TextStyle(
-                        color: Colors.black87, fontWeight: FontWeight.bold),
-                    onChanged: (value) {
-                      //Do something with the user input.
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Enter your email',
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 20.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Flexible(
-                  flex: 3,
-                  child: TextField(
-                    style: TextStyle(
-                        color: Colors.black87, fontWeight: FontWeight.bold),
-                    onChanged: (value) {
-                      //Do something with the user input.
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Enter password',
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 20.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Flexible(
-                  flex: 3,
-                  child: TextField(
-                    style: TextStyle(
-                        color: Colors.black87, fontWeight: FontWeight.bold),
-                    onChanged: (value) {
-                      //Do something with the user input.
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Re-enter password',
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 20.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 8.0,
-                ),
-                Flexible(
-                  flex: 3,
-                  child: TextField(
-                    style: TextStyle(
-                        color: Colors.black87, fontWeight: FontWeight.bold),
-                    onChanged: (value) {
-                      //Do something with the user input.
-                    },
-                    decoration: InputDecoration(
-                      filled: true,
-                      fillColor: Color.fromRGBO(225, 225, 225, .2),
-                      hintText: 'Upload photo',
-                      contentPadding: EdgeInsets.symmetric(
-                          vertical: 12.0, horizontal: 20.0),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: Colors.black45, width: 2.0),
-                        borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                      ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 16.0,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 36.0),
-                  child: Material(
-                    color: Color.fromRGBO(255, 255, 255, .4),
-                    borderRadius: BorderRadius.all(Radius.circular(30.0)),
-                    elevation: 5.0,
-                    child: MaterialButton(
-                      materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      onPressed: () {
-                        // push the current context to the routeName
-                        Navigator.pushNamed(context, '/');
-                      },
-                      minWidth: 200.0,
-                      height: 82.0,
-                      child: Text(
-                        'Create Account',
-                        style: TextStyle(
-                          fontSize: 20.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
- */
-
-/*
-Flexible(
-              flex: 3,
-              child: TextField(
-                onChanged: (value) {
-                  //Do something with the user input.
-                },
-                decoration: InputDecoration(
-                  hintText: 'Secret Question',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.blueAccent, width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.blueAccent, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 8.0,
-            ),
-            Flexible(
-              flex: 3,
-              child: TextField(
-                onChanged: (value) {
-                  //Do something with the user input.
-                },
-                decoration: InputDecoration(
-                  hintText: 'Answer to Question',
-                  contentPadding:
-                      EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.blueAccent, width: 1.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Colors.blueAccent, width: 2.0),
-                    borderRadius: BorderRadius.all(Radius.circular(32.0)),
-                  ),
-                ),
-              ),
-            ),
- */
+*/
