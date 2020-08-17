@@ -7,6 +7,7 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'constants.dart';
 import 'passport.dart';
 
+
 class RegistrationPage extends StatefulWidget {
   TextEditingController textFieldController = TextEditingController();
   static String id = 'registration';
