@@ -202,6 +202,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     'phoneNumber': phoneNumber,
                   });
                   try {
+                    //if registration successful, new user is created and saved in _auth object
+                    //as current user(someone who is signed in
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
                     if ((newUser != null) &&
@@ -238,18 +240,3 @@ class _RegistrationPageState extends State<RegistrationPage> {
   }
   //Navigator.pushNamed(context, LoginScreen.id);}
 }
-
-/*
-class _RegistrationPageState extends State<RegistrationPage> {
-  File _image;
-
-  Future getImage() async {
-    var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-
-    setState(() {
-      _image = image;
-      print('_image: $_image');
-    });
-  }
-
-*/

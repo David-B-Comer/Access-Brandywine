@@ -1,0 +1,20 @@
+dependencies: \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseFirestore/Firestore/core/src/nanopb/reader.cc \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseFirestore/Firestore/core/src/nanopb/reader.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/nanopb/pb.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/nanopb/pb_decode.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseFirestore/Firestore/core/include/firebase/firestore/firestore_errors.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseFirestore/Firestore/core/src/nanopb/byte_string.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseFirestore/Firestore/core/src/util/comparison.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/meta/type_traits.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/config.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/options.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/policy_checks.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/strings/string_view.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/internal/throw_delegate.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/macros.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/attributes.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/optimization.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/abseil/absl.framework/Headers/base/port.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseFirestore/Firestore/core/src/util/status.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseFirestore/Firestore/core/src/util/status_fwd.h

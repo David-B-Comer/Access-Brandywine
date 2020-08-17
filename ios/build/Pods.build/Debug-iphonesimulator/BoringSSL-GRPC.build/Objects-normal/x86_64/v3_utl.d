@@ -1,0 +1,45 @@
+dependencies: \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/crypto/x509v3/v3_utl.c \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/Target\ Support\ Files/BoringSSL-GRPC/BoringSSL-GRPC-prefix.pch \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/bn.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/base.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/is_boringssl.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/opensslconf.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/thread.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/conf.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/stack.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/type_check.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/lhash.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/err.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/mem.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/obj.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/bytestring.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/span.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/nid.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/x509v3.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/bio.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/buffer.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/buf.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/ex_data.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/x509.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/asn1.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/cipher.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/dh.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/dsa.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/engine.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/ecdh.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/ec_key.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/ec.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/ecdsa.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/evp.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/aead.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/base64.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/digest.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/pkcs7.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/pool.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/rsa.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/sha.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/include/openssl/x509_vfy.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/crypto/x509v3/../conf/internal.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/crypto/x509v3/../internal.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/BoringSSL-GRPC/src/crypto/x509v3/internal.h

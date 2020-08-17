@@ -1,0 +1,25 @@
+dependencies: \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthBackend+MultiFactor.m \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/build/Pods.build/Debug-iphonesimulator/FirebaseAuth.build/module.modulemap \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthBackend+MultiFactor.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthBackend.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRPCRequest.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRPCResponse.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Enroll/FIRFinalizeMFAEnrollmentRequest.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRIdentityToolkitRequest.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRequestConfiguration.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/Phone/FIRAuthProtoFinalizeMFAPhoneRequestInfo.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/FIRAuthProto.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Enroll/FIRFinalizeMFAEnrollmentResponse.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/Phone/FIRAuthProtoFinalizeMFAPhoneResponseInfo.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Enroll/FIRStartMFAEnrollmentRequest.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/Phone/FIRAuthProtoStartMFAPhoneRequestInfo.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/SystemService/FIRAuthAppCredential.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Enroll/FIRStartMFAEnrollmentResponse.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/Proto/Phone/FIRAuthProtoStartMFAPhoneResponseInfo.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/SignIn/FIRFinalizeMFASignInRequest.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/SignIn/FIRFinalizeMFASignInResponse.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/SignIn/FIRStartMFASignInRequest.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/SignIn/FIRStartMFASignInResponse.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Unenroll/FIRWithdrawMFARequest.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/RPC/MultiFactor/Unenroll/FIRWithdrawMFAResponse.h

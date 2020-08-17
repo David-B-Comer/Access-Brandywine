@@ -27,6 +27,7 @@ class PassportPage extends StatefulWidget {
 
 class _PassportPageState extends State<PassportPage> {
   final _auth = FirebaseAuth.instance;
+  // if currentUser != null, we return a loggedInUser as current user
   FirebaseUser loggedInUser;
   String emailDB;
   String userName;
@@ -40,6 +41,9 @@ class _PassportPageState extends State<PassportPage> {
 
   void getCurrentUser() async {
     try {
+      //will be null if no one is signed in. But if
+      //someone has registered or if someone is logged in,
+      // it'll tap into the current user email and password
       final user = await _auth.currentUser();
       if (user != null) {
         loggedInUser = user;
@@ -56,10 +60,16 @@ class _PassportPageState extends State<PassportPage> {
       home: Scaffold(
         backgroundColor: Colors.orange,
         appBar: AppBar(
-          centerTitle: true,
-          backgroundColor: Colors.black,
-          title: Text('Access Brandywine'),
-        ),
+            centerTitle: true,
+            backgroundColor: Colors.black,
+            title: Text('Access Brandywine'),
+            actions: <Widget>[
+              IconButton(
+                  icon: Icon(Icons.close),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  })
+            ]),
         body: SafeArea(
           child: Center(
             child: Padding(
@@ -184,7 +194,7 @@ class _PassportPageState extends State<PassportPage> {
                         onPressed: () {
                           _auth.signOut();
                           // push the current context to the routeName
-                          Navigator.pushNamed(context, '/');
+                          Navigator.pop(context);
                           print('logged out');
                         },
                         child: Text(

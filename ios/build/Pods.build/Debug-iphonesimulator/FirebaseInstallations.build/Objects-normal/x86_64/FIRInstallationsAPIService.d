@@ -1,0 +1,52 @@
+dependencies: \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsAPI/FIRInstallationsAPIService.m \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/build/Pods.build/Debug-iphonesimulator/FirebaseInstallations.build/module.modulemap \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsAPI/FIRInstallationsAPIService.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FIRInstallationsVersion.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromises.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/build/Pods.build/Debug-iphonesimulator/PromisesObjC.build/module.modulemap \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Wrap.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Validate.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Timeout.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Then.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Testing.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Retry.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Reduce.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Recover.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Race.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Do.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Delay.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Catch.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Await.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Async.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Any.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+Always.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromiseError.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/build/ios/Debug-iphonesimulator/PromisesObjC/FBLPromises.framework/Headers/FBLPromise+All.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/Target\ Support\ Files/PromisesObjC/PromisesObjC-umbrella.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FirebaseCoreInternal.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/build/Pods.build/Debug-iphonesimulator/FirebaseCore.build/module.modulemap \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIROptions.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FirebaseCore.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRApp.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/Target\ Support\ Files/FirebaseCore/FirebaseCore-umbrella.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FIRAppInternal.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FIRErrors.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FIRErrorCode.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FIRComponent.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FIRComponentContainer.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FIRComponentType.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FIRLibrary.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FIRDependency.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FIRHeartbeatInfo.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FIRLogger.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseCore/Sources/Private/FIROptionsInternal.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Errors/FIRInstallationsErrorUtil.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/Public/FirebaseInstallations/FIRInstallationsErrors.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/FIRInstallationsLogger.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsAPI/FIRInstallationsItem+RegisterInstallationAPI.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/FIRInstallationsItem.h \
+  /Users/ahoward/Desktop/redone/access_brandywine/ios/Pods/FirebaseInstallations/FirebaseInstallations/Source/Library/InstallationsIDController/FIRInstallationsStatus.h
