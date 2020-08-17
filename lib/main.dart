@@ -157,7 +157,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(color: Colors.grey, fontSize: 14),
                 ),
                 onPressed: () =>
-                    Navigator.of(context).pushNamed(RegistrationPage.id),
+                    Navigator.pushNamed(context, RegistrationPage.id),
               ),
             ),
             //Navigate to second screen
