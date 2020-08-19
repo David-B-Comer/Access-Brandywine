@@ -17,3 +17,4 @@ const kTextFieldDecoration = InputDecoration(
     borderRadius: BorderRadius.all(Radius.circular(0.0)),
   ),
 );
+
