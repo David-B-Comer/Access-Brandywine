@@ -5,7 +5,6 @@ import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:newflutterapp/register.dart';
 import 'passport.dart';
 import 'constants.dart';
 
@@ -36,12 +35,12 @@ class _LoginPageState extends State<LoginPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              width: 220,
-              height: 36,
+              width: 300,
+              height: 50,
               child: TextField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 18),
                 onChanged: (value) {
                   email = value;
                 },
@@ -53,12 +52,12 @@ class _LoginPageState extends State<LoginPage> {
               height: 10.0,
             ),
             SizedBox(
-              width: 220,
-              height: 36,
+              width: 300,
+              height: 50,
               child: TextField(
                 obscureText: true,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 14),
+                style: TextStyle(fontSize: 18),
                 onChanged: (value) {
                   password = value;
                 },

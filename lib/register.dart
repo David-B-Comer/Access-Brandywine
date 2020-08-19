@@ -74,7 +74,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-              width: 220,
+              width: 300,
               height: 40,
               child: TextField(
                 style: TextStyle(fontSize: 14),
@@ -88,10 +88,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
             ),
             SizedBox(
-              height: 5.0,
+              height: 10.0,
             ),
             SizedBox(
-              width: 220,
+              width: 300,
               height: 40,
               child: TextField(
                 style: TextStyle(fontSize: 14),
@@ -105,10 +105,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
             ),
             SizedBox(
-              height: 5.0,
+              height: 10.0,
             ),
             SizedBox(
-              width: 220,
+              width: 300,
               height: 40,
               child: TextField(
                 style: TextStyle(fontSize: 14),
@@ -121,10 +121,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
             ),
             SizedBox(
-              height: 5.0,
+              height: 10.0,
             ),
             SizedBox(
-              width: 220,
+              width: 300,
               height: 40,
               child: TextField(
                 style: TextStyle(fontSize: 14),
@@ -138,10 +138,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
             ),
             SizedBox(
-              height: 5.0,
+              height: 10.0,
             ),
             SizedBox(
-              width: 220,
+              width: 300,
               height: 40,
               child: TextField(
                 keyboardType: TextInputType.number,
@@ -156,10 +156,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
               ),
             ),
             SizedBox(
-              height: 5.0,
+              height: 50.0,
             ),
             SizedBox(
-              width: 220,
+              width: 300,
               height: 40,
               child: RaisedButton(
                 shape: RoundedRectangleBorder(
