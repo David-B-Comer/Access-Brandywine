@@ -7,8 +7,6 @@ import 'package:flutter/services.dart';
 import 'constants.dart';
 import 'passport.dart';
 
-
-
 // ignore: must_be_immutable
 
 class RegistrationPage extends StatefulWidget {
@@ -32,6 +30,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   String lastName;
   String phoneNumber;
   String photo;
+  String status;
 
   @override
   void initState() {
@@ -51,18 +50,19 @@ class _RegistrationPageState extends State<RegistrationPage> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.black,
-        title: Text(
-          widget.title,
-        ),
-      ),
+//      appBar: AppBar(
+//        backgroundColor: Colors.black,
+//        title: Text(
+//          widget.title,
+//        ),
+//      ),
       body: Container(
         alignment: Alignment.topCenter,
         decoration: BoxDecoration(
@@ -81,7 +81,8 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
-                  email = value;
+                  email = value.trim();
+                  print(email);
                 },
                 decoration:
                     kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
@@ -128,7 +129,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               height: 40,
               child: TextField(
                 style: TextStyle(fontSize: 14),
-                obscureText: true,
+                //obscureText: true,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   lastName = value;
@@ -145,7 +146,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
               height: 40,
               child: TextField(
                 keyboardType: TextInputType.number,
-                obscureText: true,
+                //obscureText: true,
                 style: TextStyle(color: Colors.black, fontSize: 14),
                 textAlign: TextAlign.center,
                 onChanged: (value) {
@@ -178,6 +179,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     'firstName': firstName,
                     'lastName': lastName,
                     'phoneNumber': phoneNumber,
+                    status: 'pending',
                   });
                   try {
                     final newUser = await _auth.createUserWithEmailAndPassword(

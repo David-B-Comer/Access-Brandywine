@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.white,
                 child: Text(
                   'Login to Account',
-                  style: TextStyle(color: Colors.grey, fontSize: 25),
+                  style: TextStyle(color: Colors.grey, fontSize: 20),
                 ),
                 onPressed: () => Navigator.of(context).pushNamed(LoginPage.id),
               ),
@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 color: Colors.white,
                 child: Text(
                   'Register for Account',
-                  style: TextStyle(color: Colors.grey, fontSize: 25),
+                  style: TextStyle(color: Colors.grey, fontSize: 20),
                 ),
                 onPressed: () =>
                     Navigator.of(context).pushNamed(RegistrationPage.id),

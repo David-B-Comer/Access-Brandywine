@@ -30,6 +30,7 @@ class _PassportPageState extends State<PassportPage> {
   FirebaseUser loggedInUser;
   String emailDB;
   String userName;
+  String status = 'pending';
 
   //capture user info when state is initialized
   @override
@@ -50,11 +51,21 @@ class _PassportPageState extends State<PassportPage> {
     }
   }
 
+Color statusColor (String status) {
+  if(status == 'approved') {
+    return Colors.green;
+  } else if (status == 'declined') {
+    return Colors.red;
+  } else {
+    return Colors.orange;
+  }
+}
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.orange,
+        backgroundColor: statusColor(status),
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.black,

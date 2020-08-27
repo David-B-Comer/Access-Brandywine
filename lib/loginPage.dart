@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 18),
                 onChanged: (value) {
-                  email = value;
+                  email = value.trim();
                 },
                 decoration:
                     kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
